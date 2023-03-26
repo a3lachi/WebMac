@@ -9,9 +9,6 @@ export default {
     src: String
   },
   methods:{
-    doSome() {
-
-    },
     ...mapActions(['addTab']),
     handleClick (event) {
       const id = event.target.parentElement.id
