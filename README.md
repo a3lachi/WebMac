@@ -1,6 +1,6 @@
 
 
-<div style="display:flex;">
+<div style="display:flex;text-align:center;justify-content:center">
 First project experimenting with Vue.js
 
 
