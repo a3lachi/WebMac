@@ -20,10 +20,12 @@ export default {
 
 <template>
     <div class="iqonat">
+        <Icon text="Education"/>
+        <Icon text="About"/>
+        <Icon text="Projects"/>
+        <Icon text="APIs"/>
+        <Icon text="Links"/>
         <Icon text="Music"/>
-        <div>{{ text }}</div>
-        <div>{{ text }}</div>
-        <div>{{ text }}</div>
     </div>
 </template>
 
@@ -34,13 +36,10 @@ export default {
 <style>
 
 .iqonat{
-    width: 100%;
-    height:100vh;
-    color:red;
+    width: 10%;
     position:absolute;
     top:15%;
     left:2%;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     gap:40px;

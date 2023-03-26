@@ -8,6 +8,9 @@ export default {
 
     }
   },
+  mounted(){
+    console.log('-----',this.show)
+  }
 }
 
 
@@ -30,14 +33,15 @@ export default {
 .container-bar{
     background-color: blue;
     height:20px;
-    width: 100%;
-    margin-bottom:bottom;
+    width: 100vw;
+    /* margin-bottom:bottom; */
     position: absolute;
     top:0;
-    z-index: 2;
+    left:0;
+    z-index: 5;
 }
 .faker{
-    height:1px;
+    height:30px;
     width: 100%;
     margin-bottom:bottom;
     position: absolute;

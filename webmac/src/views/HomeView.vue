@@ -23,7 +23,8 @@ export default {
 <template>
     <div v-on:mouseover=changeMessage   class="container">
         <Bar v-bind:show=toShow  v-bind:key=toShow />
-        <img src="/bgrnd.png" />        
+        <img src="/bgrnd.png" />
+        
     </div>
 </template>
 
@@ -32,14 +33,14 @@ export default {
 <style>
 
 .container {
+    height: 100vh;
     position: relative;
 }
 
 img {
     width:100vw;
     height: 100vh;
-    margin-bottom:0;
-    z-index: 1;
+    margin-bottom:auto;
 }
 
 

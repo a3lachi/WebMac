@@ -7,15 +7,14 @@ import IconView from './views/IconView.vue'
 <template>
   <div class="container col">
     <HomeView />
-    <IconView text="About"/>
-
+    <IconView />
   </div>
 
 </template>
 
 <style>
 div {
-  max-height: 100vh;
+  max-height: 100%;
 }
 
 </style>
