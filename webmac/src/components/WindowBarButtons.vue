@@ -18,7 +18,7 @@ export default {
 <div   class="bts">
     <div  @click="closeWindow(data)"  class="btn">
         <div class="insdbtn">
-            X
+            x
         </div>
         
     </div>
@@ -60,10 +60,12 @@ export default {
     justify-content: center; 
     width:100%;
     background-color: blueviolet;
+    border-radius: 10px;
 }
 
 .insdbtn{
     display: inline-block;
+    cursor: default;
 }
 
 </style>

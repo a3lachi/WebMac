@@ -16,6 +16,7 @@ export default {
                 "text-align":"center",
                 "right":0,
                 "width":`${this.data.width-70}px`,
+                "color":'rgb(184,183,180)'
             };
             }
     },

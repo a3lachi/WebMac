@@ -21,13 +21,9 @@ export default {
 
 <template>
     <div   v-if="data.show === true">
-        <div   id="win"  :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
+        <div   class="win"  :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
 
-            <div class="win"  >
                 <WindowBar :data="data" />
-            </div>
-            {{ data.text }}
-
         </div>
     </div>  
 
@@ -40,7 +36,7 @@ export default {
 
 
 <style>
-#win{
+.win{
     position : absolute;
     background-color: #c2bfbf;
     outline-style: solid;

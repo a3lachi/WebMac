@@ -43,7 +43,6 @@ export default {
 
 .taxt{
     color:white;
-    font-family: 'Courier New', Courier, monospace;
     cursor: default;
 }
 
