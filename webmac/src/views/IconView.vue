@@ -3,13 +3,9 @@ import Icon from '../components/Icon.vue'
 
 export default {
   props: {
-    data: Array,
-    text: String,
+    data: Object,
   },
   methods:{
-    doSome() {
-
-    }
   },
   components:{
     Icon,

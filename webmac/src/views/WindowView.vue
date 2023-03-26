@@ -3,12 +3,11 @@ import Window from '../components/Window.vue';
 
 export default {
   props:{
-    data: Array,
+    data: Object,
   },
   methods:{
   },
   computed: {
-
   },
   components:{
         Window
