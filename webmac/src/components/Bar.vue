@@ -8,9 +8,6 @@ export default {
 
     }
   },
-  mounted(){
-    console.log('-----',this.show)
-  }
 }
 
 
@@ -37,6 +34,7 @@ export default {
     margin-bottom:bottom;
     position: absolute;
     top:0;
+    z-index: 2;
 }
 .faker{
     height:1px;
