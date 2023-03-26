@@ -1,8 +1,26 @@
-<script setup>
+<script>
+
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters(['getTabs']),
+    tabs() {
+      return this.getTabs
+    }
+  }
+}
 </script>
 
 <template>
-  <main>
+  <div class="windows">
 
-  </main>
+
+  </div>
 </template>
+
+
+<style>
+
+.windows{}
+
+</style>

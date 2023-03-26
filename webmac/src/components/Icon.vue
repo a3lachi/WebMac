@@ -1,4 +1,8 @@
 <script>
+
+import { mapActions } from 'vuex'
+
+
 export default {
   props: {
     text: String,
@@ -7,16 +11,25 @@ export default {
   methods:{
     doSome() {
 
-    }
+    },
+    ...mapActions(['addTab']),
+    handleClick (event) {
+      const id = event.target.parentElement.id
+      this.addTab(id);
+    },
+    
   },
+  
 }
+
+
 </script>
 
 
 <template>
 
-    <div class="containerr">
-        <div class="tswira"></div>
+    <div v-bind:id="text+'Icon'" class="containerr">
+        <div @click="handleClick"   class="tswira"></div>
         <div class="taxt">{{ text }}</div>
     </div>
 
@@ -39,6 +52,7 @@ export default {
 .taxt{
     color:white;
     font-family: 'Courier New', Courier, monospace;
+    cursor: default;
 }
 
 .tswira{

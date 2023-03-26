@@ -1,19 +1,20 @@
 export default {
     state: {
-      tab: 0
+      tabs: []
     },
     mutations: {
-      set(state,payload) {
-        state.tab=payload;
+      add(state,payload) {
+        state.tabs.push(payload);
+        console.log('WSSLAT',state.tabs)
       },
     },
     actions: {
-      setTab(context,payload) {
-        context.commit('set',payload)
+      addTab(context,payload) {
+        context.commit('add',payload)
       }
     },
     getters: {
-      getTab(state) {
+      getTabs(state) {
         return state.tab;
       }
     }

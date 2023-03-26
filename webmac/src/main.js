@@ -13,7 +13,7 @@ const store = createStore({
     modules: {
       module
     }
-  });
+});
 
 const app = createApp(App)
 
