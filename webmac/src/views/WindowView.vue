@@ -21,6 +21,14 @@ export default {
 
 <style>
 
-.windows{}
+.windows{
+  position : absolute;
+  width: 40vw;
+  height: 30vh;
+  background-color: white;
+  outline-style: solid;
+  top:30%;
+  left:20%
+}
 
 </style>
