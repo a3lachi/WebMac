@@ -29,7 +29,7 @@ export default {
     </div>
     <div class="btn">
         <div class="insdbtn">
-            --
+            -
         </div>
     </div>
     
