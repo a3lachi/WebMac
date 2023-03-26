@@ -5,12 +5,13 @@ import { mapActions } from 'vuex'
 
 export default {
     props:{
-        showwin: Boolean,
+        showWin: Boolean,
         text: String,
         left: Number,
         top: Number,
         width: Number,
         height: Number,
+        data: Object,
 
     },
     data(){
@@ -31,12 +32,13 @@ export default {
 
 
 <template>
-    <div   v-if="show === true">
+    <div   v-if="showWin === true || this.show === true ">
         <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` , width:`${width}px` , height:`${height}px` }"      >
 
             <div class="win"  >
                 {{ text }}
                 {{ show }}
+                <!-- {{ data.show }} -->
             </div>
 
         </div>

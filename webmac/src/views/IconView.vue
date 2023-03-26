@@ -3,7 +3,8 @@ import Icon from '../components/Icon.vue'
 
 export default {
   props: {
-    text: String
+    data: Array,
+    text: String,
   },
   methods:{
     doSome() {
@@ -20,12 +21,12 @@ export default {
 
 <template>
     <div class="iqonat">
-        <Icon text="Education"/>
-        <Icon text="About"/>
-        <Icon text="Projects"/>
+        <!-- <Icon text="Education"/> -->
+        <Icon :data="this.data[0]" text="About"/>
+        <!-- <Icon text="Projects"/>
         <Icon text="APIs"/>
         <Icon text="Links"/>
-        <Icon text="Music"/>
+        <Icon text="Music"/> -->
     </div>
 </template>
 

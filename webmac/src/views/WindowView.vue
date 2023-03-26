@@ -1,6 +1,7 @@
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapGetters , mapActions } from 'vuex'
+
 import Window from '../components/Window.vue';
 
 const WinInfo = (show,left,top,w,h) => {
@@ -15,9 +16,12 @@ const WinInfo = (show,left,top,w,h) => {
   )
 }
 export default {
+  props:{
+    data: Array,
+  },
   data(){
     return{
-      About:WinInfo(true,25,30,500,300),
+      KK:WinInfo(true,25,30,500,300),
       Resumer:WinInfo(false,40),
     }
   },
@@ -27,9 +31,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getTabs']),
+    ...mapGetters(['getTabs' , 'getAbout']),
     tabs() {
       return this.getTabs
+    },
+    About() {
+      return this.getAbout
     }
   },
   components:{
@@ -41,7 +48,8 @@ export default {
 <template>
   <div class="windows">
     <div class="fakerwin"></div>
-    <Window text="About"     v-bind:left="this.About.left"      v-bind:top="this.About.top"       v-bind:showwin="this.About.show"   v-bind:width="this.About.width"  v-bind:height="this.About.height"     />
+    <div class="qq">===>>{{ About }}</div>
+    <Window text="About"     v-bind:left="this.KK.left"   :data="this.data[0]"   v-bind:top="KK.top"       v-bind:showWin="this.data[0].show"   v-bind:width="KK.width"  v-bind:height="KK.height"     />
     
 
   </div>

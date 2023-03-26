@@ -1,6 +1,21 @@
+const WinInfo = (show,left,top,w,h) => {
+  return (
+    {
+      show:show,
+      left:left,
+      top:top,
+      width:w,
+      height:h,
+    }
+  )
+}
+
+
 export default {
     state: {
-      tabs: []
+      tabs: [],
+      About:WinInfo(true,25,30,500,300),
+      Resumer:WinInfo(false,40),
     },
     mutations: {
       add(state,payload) {
@@ -9,6 +24,12 @@ export default {
       pop(state,payload) {
         console.log('yes')
         state.tabs = state.tabs.filter((elem)=>(elem!=payload))
+      },
+      closeAbout(state,payload) {
+        state.About.show = false ;
+      },
+      openAbout(state,payload) {
+        state.About.show = true ;
       }
     },
     actions: {
@@ -22,6 +43,9 @@ export default {
     getters: {
       getTabs(state) {
         return state.tab;
+      },
+      getAbout(state) {
+        return state.About ;
       }
     }
   }
