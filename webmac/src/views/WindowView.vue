@@ -3,19 +3,22 @@
 import { mapGetters } from 'vuex'
 import Window from '../components/Window.vue';
 
+const WinInfo = (show,left,top,w,h) => {
+  return (
+    {
+      show:show,
+      left:left,
+      top:top,
+      width:w,
+      height:h,
+    }
+  )
+}
 export default {
   data(){
     return{
-      show:{
-        About: true,
-        Resume: true,
-      },
-      left:{
-        About: 30,
-      },
-      top:{
-        About:20,
-      }
+      About:WinInfo(true,25,30,500,300),
+      Resumer:WinInfo(false,40),
     }
   },
   computed: {
@@ -33,7 +36,7 @@ export default {
 <template>
   <div class="windows">
     <div class="fakerwin"></div>
-    <Window text="About"     v-bind:left="this.left['About']"      v-bind:top="this.top['About']"       v-bind:show="this.show['About']"        />
+    <Window text="About"     v-bind:left="this.About.left"      v-bind:top="this.About.top"       v-bind:show="this.About.show"   v-bind:width="this.About.width"  v-bind:height="this.About.height"     />
     
 
   </div>

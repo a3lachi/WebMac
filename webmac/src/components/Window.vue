@@ -1,6 +1,4 @@
 
-
-
 <script>
 
 import { mapActions } from 'vuex'
@@ -9,8 +7,10 @@ export default {
     props:{
         show: Boolean,
         text: String,
-        left: String,
-        top: String,
+        left: Number,
+        top: Number,
+        width: Number,
+        height: Number,
 
     },
     methods:{
@@ -27,7 +27,7 @@ export default {
 
 <template>
     <div   v-if="show === true">
-        <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` }"      >
+        <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` , width:`${width}px` , height:`${height}px` }"      >
 
             <div class="win"  >
                 {{ text }}
@@ -48,8 +48,6 @@ export default {
 <style>
 #win{
     position : absolute;
-    width: 40vw;
-    height: 30vh;
     background-color: white;
     outline-style: solid;
     z-index: 5;
