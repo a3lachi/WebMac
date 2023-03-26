@@ -21,6 +21,11 @@ export default {
       Resumer:WinInfo(false,40),
     }
   },
+  methods:{
+    close() {
+      
+    }
+  },
   computed: {
     ...mapGetters(['getTabs']),
     tabs() {
@@ -36,7 +41,7 @@ export default {
 <template>
   <div class="windows">
     <div class="fakerwin"></div>
-    <Window text="About"     v-bind:left="this.About.left"      v-bind:top="this.About.top"       v-bind:show="this.About.show"   v-bind:width="this.About.width"  v-bind:height="this.About.height"     />
+    <Window text="About"     v-bind:left="this.About.left"      v-bind:top="this.About.top"       v-bind:showwin="this.About.show"   v-bind:width="this.About.width"  v-bind:height="this.About.height"     />
     
 
   </div>

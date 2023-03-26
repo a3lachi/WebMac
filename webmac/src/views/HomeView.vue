@@ -1,6 +1,6 @@
 <script>
 
-import Bar from '../components/Bar.vue';
+import TheBar from '../components/TheBar.vue';
 
 export default {
   data() {
@@ -14,7 +14,7 @@ export default {
     },
   },
   components: {
-    Bar
+    TheBar
   }
 };
 </script>
@@ -22,7 +22,7 @@ export default {
 
 <template>
     <div v-on:mouseover=changeMessage   class="container">
-        <Bar v-bind:show=toShow  v-bind:key=toShow />
+        <TheBar v-bind:show=toShow  v-bind:key=toShow />
         <img src="/bgrnd.png" />
         
     </div>

@@ -5,7 +5,7 @@ import { mapActions } from 'vuex'
 
 export default {
     props:{
-        show: Boolean,
+        showwin: Boolean,
         text: String,
         left: Number,
         top: Number,
@@ -13,10 +13,15 @@ export default {
         height: Number,
 
     },
+    data(){
+        return {
+            show: this.showwin
+        }
+    },
     methods:{
         ...mapActions(['closeTab']),
         handleClick(event) {
-            this.closeTab(this.text)
+            this.show = false
         },
     },
 

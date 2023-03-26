@@ -7,6 +7,7 @@ export default {
         state.tabs.push(payload);
       },
       pop(state,payload) {
+        console.log('yes')
         state.tabs = state.tabs.filter((elem)=>(elem!=payload))
       }
     },
