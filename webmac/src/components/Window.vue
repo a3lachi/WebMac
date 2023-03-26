@@ -26,6 +26,7 @@ export default {
             <div class="win"  >
                 <WindowBar :data="data.text" />
             </div>
+            {{ data.text }}
 
         </div>
     </div>  
@@ -41,8 +42,11 @@ export default {
 <style>
 #win{
     position : absolute;
-    background-color: white;
+    background-color: #c2bfbf;
     outline-style: solid;
     z-index: 5;
+    border-radius: 1.4px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
 }
+
 </style>

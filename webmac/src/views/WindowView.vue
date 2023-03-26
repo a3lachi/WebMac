@@ -37,14 +37,6 @@ export default {
   left:0;
 }
 
-/* .fakerwin{
-  position : absolute;
-  width: 100vw;
-  height: 1px;
-  top:0px;
-
-} */
-
 .qq{
   color:white;
 }

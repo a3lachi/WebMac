@@ -17,7 +17,7 @@ export default {
       tabs: [],
       win:{
         About:WinInfo('About',false,25,30,500,300),
-        Resumer:WinInfo('Resumer',false,25,20,700,500),
+        Resume:WinInfo('Resume',false,25,20,700,500),
       },
     },
     mutations: {

@@ -20,9 +20,7 @@ export default {
 <template>
 
 <div   class="windowbar">
-    <div class="title">
-        {{ data }}
-    </div>
+
     <WindowBarButtons :data="data" />
 
 </div>
@@ -35,6 +33,7 @@ export default {
 <style>
 
 .windowbar{
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
     margin-bottom:auto;
     width:100%;
     height:20px;
