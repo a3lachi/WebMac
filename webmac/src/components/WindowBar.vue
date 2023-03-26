@@ -4,7 +4,7 @@ import WindowBarButtons from './WindowBarButtons.vue'
 
 export default {
     props:{
-        data:Object,
+        data:String,
     },
 
     methods:{
@@ -21,9 +21,9 @@ export default {
 
 <div   class="windowbar">
     <div class="title">
-        {{ data.text }}
+        {{ data }}
     </div>
-    <WindowBarButtons :data="data.text" />
+    <WindowBarButtons :data="data" />
 
 </div>
 

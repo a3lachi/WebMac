@@ -24,7 +24,7 @@ export default {
         <div   id="win"  :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
 
             <div class="win"  >
-                <WindowBar :data="data" />
+                <WindowBar :data="data.text" />
             </div>
 
         </div>
