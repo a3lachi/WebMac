@@ -1,7 +1,7 @@
 # webmac
 
-Clone repo, and run => npm install ; npm run dev ; 
-This template should help get you started developing with Vue 3 in Vite.
+Clone repo, and run : npm install ; npm run dev ; 
+
 
 ## Recommended IDE Setup
 
