@@ -21,16 +21,15 @@ export default {
 
 
 <template>
-<div v-bind:class="text+'windowcontainer'" id="wndw" 
-    :style = "{ left:`${left}%` , top:`${top}%` }"
->
-    <div class="window'">
-        {{ text }}
-        {{ left }}
+
+    <div    v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` }"      >
+
+        <div   class="win"  >
+            {{ text }}
+            {{ left }}
+        </div>
+
     </div>
-
-</div>
-
 
 </template>
 
@@ -41,7 +40,7 @@ export default {
 
 
 <style>
-#wndw{
+#win{
     position : absolute;
     width: 40vw;
     height: 30vh;
