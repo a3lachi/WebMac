@@ -1,7 +1,7 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import { mapActions , mapGetters , mapState } from 'vuex'
 
 export default {
     props:{
@@ -25,6 +25,15 @@ export default {
             this.show = false
         },
     },
+    computed:{
+        ...mapState({
+            win: state => state.win
+            }),
+        ...mapGetters([ 'getAbout']),
+        Abouts() {
+            return this.getAbout('About')
+        }
+    }
 
 }
 </script>
@@ -32,13 +41,12 @@ export default {
 
 
 <template>
-    <div   v-if="showWin === true || this.show === true ">
+    <div   v-if="data.show === true">
         <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` , width:`${width}px` , height:`${height}px` }"      >
 
             <div class="win"  >
-                {{ text }}
-                {{ show }}
-                <!-- {{ data.show }} -->
+                {{ data.show }}
+                {{ Abouts.show }}
             </div>
 
         </div>

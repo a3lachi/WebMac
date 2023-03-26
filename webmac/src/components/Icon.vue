@@ -10,12 +10,10 @@ export default {
     data: Object,
   },
   methods:{
-    ...mapActions(['addTab']),
+    ...mapActions(['closeAbout']),
     handleClick (event) {
-      const id = event.target.parentElement.id.split('Icon')[0]
-      this.addTab(id);
       console.log('brek')
-      this.data.show = false
+      this.closeAbout
     },
     
   },

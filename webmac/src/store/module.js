@@ -14,8 +14,10 @@ const WinInfo = (show,left,top,w,h) => {
 export default {
     state: {
       tabs: [],
-      About:WinInfo(true,25,30,500,300),
-      Resumer:WinInfo(false,40),
+      win:{
+        About:WinInfo(true,25,30,500,300),
+        Resumer:WinInfo(false,40),
+      },
     },
     mutations: {
       add(state,payload) {
@@ -25,7 +27,7 @@ export default {
         console.log('yes')
         state.tabs = state.tabs.filter((elem)=>(elem!=payload))
       },
-      closeAbout(state,payload) {
+      closeAbout(state) {
         state.About.show = false ;
       },
       openAbout(state,payload) {
@@ -46,7 +48,7 @@ export default {
       },
       getAbout: (state) => (win) => {
         if (win === 'About')
-          return state.About ;
+          return state.win.About ;
       }
     }
   }
