@@ -5,16 +5,10 @@ import { mapActions } from 'vuex'
 
 export default {
   props: {
-    text: String,
-    src: String,
     data: Object,
   },
   methods:{
-    ...mapActions(['closeAbout']),
-    handleClick (event) {
-      console.log('brek')
-      this.closeAbout
-    },
+    ...mapActions(['openWindow']),
     
   },
   
@@ -26,9 +20,9 @@ export default {
 
 <template>
 
-    <div v-bind:id="text+'Icon'" class="containerr">
-        <div @click="handleClick"   class="tswira"></div>
-        <div class="taxt">{{ this.data.show }} {{ this.data.win }}</div>
+    <div v-bind:id="data.text+'Icon'" class="containerr">
+        <div @click="openWindow(data.text)"   class="tswira"></div>
+        <div class="taxt">{{ data.text }}</div>
     </div>
 
 </template>

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createStore } from 'vuex';
-import module from './store/module'; 
+import store from './store/store'; 
 
 
 import App from './App.vue'
@@ -9,15 +9,15 @@ import router from './router'
 import './assets/main.css'
 
 
-const store = createStore({
+const myStore = createStore({
     modules: {
-      module
+      store
     }
 });
 
 const app = createApp(App)
 
-app.use(store);
+app.use(myStore);
 
 app.use(router)
 

@@ -14,15 +14,22 @@ const WinInfo = (win,show,left,top,w,h) => {
     }
   )
 }
+import { mapGetters } from 'vuex'
 
 export default {
   data(){
     return{
       About:WinInfo("About",true,25,30,500,300),
-      Resumer:WinInfo(false,40),
+      Resumer:WinInfo("Resume",false,25,30,500,300)
     }
   },
   methods:{
+  },
+  computed: {
+    ...mapGetters(['getWins']),
+    item() {
+      return this.getWins
+    }
   },
 
   components:{
@@ -38,8 +45,8 @@ export default {
 <template>
   <div class="container col">
     <HomeView />
-    <IconView :data="[About ,Resumer]" />
-    <WindowView :data="[About ,Resumer]" />
+    <IconView :data="item" />
+    <WindowView :data="item"  />
     
   </div>
 

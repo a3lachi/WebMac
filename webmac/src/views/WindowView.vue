@@ -1,43 +1,14 @@
 <script>
-
-import { mapGetters , mapActions } from 'vuex'
-
 import Window from '../components/Window.vue';
 
-const WinInfo = (show,left,top,w,h) => {
-  return (
-    {
-      show:show,
-      left:left,
-      top:top,
-      width:w,
-      height:h,
-    }
-  )
-}
 export default {
   props:{
     data: Array,
   },
-  data(){
-    return{
-      KK:WinInfo(true,25,30,500,300),
-      Resumer:WinInfo(false,40),
-    }
-  },
   methods:{
-    close() {
-      
-    }
   },
   computed: {
-    ...mapGetters(['getTabs' , 'getAbout']),
-    tabs() {
-      return this.getTabs
-    },
-    About() {
-      return this.getAbout('About')
-    }
+
   },
   components:{
         Window
@@ -48,8 +19,9 @@ export default {
 <template>
   <div class="windows">
     <div class="fakerwin"></div>
-    <div class="qq">===>>{{ About }}</div>
-    <Window text="About"     v-bind:left="About.left"   :data="About"   v-bind:top="KK.top"       v-bind:showWin="this.data[0].show"   v-bind:width="KK.width"  v-bind:height="KK.height"     />
+    <div v-for="(item, index) in data" :key="index">
+      <Window :data="item"  />
+    </div>
     
 
   </div>

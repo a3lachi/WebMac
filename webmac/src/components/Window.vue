@@ -1,38 +1,14 @@
 
 <script>
-
-import { mapActions , mapGetters , mapState } from 'vuex'
-
+import { mapActions } from 'vuex'
 export default {
     props:{
-        showWin: Boolean,
-        text: String,
-        left: Number,
-        top: Number,
-        width: Number,
-        height: Number,
         data: Object,
-
-    },
-    data(){
-        return {
-            show: this.showwin
-        }
     },
     methods:{
-        ...mapActions(['closeTab']),
-        handleClick(event) {
-            this.show = false
-        },
+        ...mapActions(['closeWindow']),
     },
     computed:{
-        ...mapState({
-            win: state => state.win
-            }),
-        ...mapGetters([ 'getAbout']),
-        Abouts() {
-            return this.getAbout('About')
-        }
     }
 
 }
@@ -42,11 +18,10 @@ export default {
 
 <template>
     <div   v-if="data.show === true">
-        <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` , width:`${width}px` , height:`${height}px` }"      >
+        <div  @click="closeWindow(data.text)"     id="win"      :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
 
             <div class="win"  >
-                {{ data.show }}
-                {{ Abouts.show }}
+                {{ data }}
             </div>
 
         </div>

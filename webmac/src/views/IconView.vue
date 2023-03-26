@@ -21,12 +21,9 @@ export default {
 
 <template>
     <div class="iqonat">
-        <!-- <Icon text="Education"/> -->
-        <Icon :data="this.data[0]" text="About"/>
-        <!-- <Icon text="Projects"/>
-        <Icon text="APIs"/>
-        <Icon text="Links"/>
-        <Icon text="Music"/> -->
+      <div v-for="(item, index) in data" :key="index">
+        <Icon  :data="item"/>
+      </div>
     </div>
 </template>
 
