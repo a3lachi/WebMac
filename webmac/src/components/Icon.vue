@@ -11,7 +11,7 @@ export default {
   methods:{
     ...mapActions(['addTab']),
     handleClick (event) {
-      const id = event.target.parentElement.id
+      const id = event.target.parentElement.id.split('Icon')[0]
       this.addTab(id);
     },
     

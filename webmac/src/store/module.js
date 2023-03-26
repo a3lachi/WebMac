@@ -5,11 +5,9 @@ export default {
     mutations: {
       add(state,payload) {
         state.tabs.push(payload);
-        console.log('WSSLAT',state.tabs)
       },
       pop(state,payload) {
-        console.log('CLOSE WINDOW',payload)
-        // state.tabs = state.tabs.filter((elem)=>(elem!=payload))
+        state.tabs = state.tabs.filter((elem)=>(elem!=payload))
       }
     },
     actions: {

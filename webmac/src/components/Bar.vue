@@ -38,7 +38,6 @@ export default {
     position: absolute;
     top:0;
     left:0;
-    z-index: 5;
 }
 .faker{
     height:2px;

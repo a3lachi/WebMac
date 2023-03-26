@@ -15,8 +15,8 @@ export default {
     },
     methods:{
         ...mapActions(['closeTab']),
-        handleClick() {
-            this.closeTab('rrrr')
+        handleClick(event) {
+            this.closeTab(this.text)
         },
     },
 
@@ -26,14 +26,16 @@ export default {
 
 
 <template>
+    <div   v-if="show === true">
+        <div  @click="handleClick"   v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` }"      >
 
-    <div    v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` }"      >
+            <div class="win"  >
+                {{ text }}
+                {{ show }}
+            </div>
 
-        <div @click="handleClick" class="win"  >
-            {{ text }}
         </div>
-
-    </div>
+    </div>  
 
 </template>
 
@@ -50,5 +52,6 @@ export default {
     height: 30vh;
     background-color: white;
     outline-style: solid;
+    z-index: 5;
 }
 </style>

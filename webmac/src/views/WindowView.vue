@@ -4,6 +4,20 @@ import { mapGetters } from 'vuex'
 import Window from '../components/Window.vue';
 
 export default {
+  data(){
+    return{
+      show:{
+        About: true,
+        Resume: true,
+      },
+      left:{
+        About: 30,
+      },
+      top:{
+        About:20,
+      }
+    }
+  },
   computed: {
     ...mapGetters(['getTabs']),
     tabs() {
@@ -19,7 +33,8 @@ export default {
 <template>
   <div class="windows">
     <div class="fakerwin"></div>
-    <Window text="About" left=30 top=20  />
+    <Window text="About"     v-bind:left="this.left['About']"      v-bind:top="this.top['About']"       v-bind:show="this.show['About']"        />
+    
 
   </div>
 </template>
@@ -42,5 +57,9 @@ export default {
   top:0px;
 
 } */
+
+.qq{
+  color:white;
+}
 
 </style>
