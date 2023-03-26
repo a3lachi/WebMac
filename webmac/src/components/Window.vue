@@ -1,14 +1,17 @@
 
 <script>
-import { mapActions } from 'vuex'
+import WindowBar from './WindowBar.vue'
 export default {
     props:{
         data: Object,
     },
     methods:{
-        ...mapActions(['closeWindow']),
+        
     },
     computed:{
+    },
+    components:{
+        WindowBar,
     }
 
 }
@@ -18,10 +21,10 @@ export default {
 
 <template>
     <div   v-if="data.show === true">
-        <div  @click="closeWindow(data.text)"     id="win"      :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
+        <div   id="win"  :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` }"      >
 
             <div class="win"  >
-                {{ data }}
+                <WindowBar :data="data" />
             </div>
 
         </div>
