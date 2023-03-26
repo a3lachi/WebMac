@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    show: String
+    show: Boolean
   },
   methods:{
     doSome() {
@@ -18,7 +18,7 @@ export default {
 
 
 <template>
-    <div   v-if="show === 'yes'">
+    <div   v-if="show === true">
         <div class="container-bar">
         </div>
     </div>
@@ -39,11 +39,11 @@ export default {
     top:0;
 }
 .faker{
-    height:20px;
+    height:1px;
     width: 100%;
     margin-bottom:bottom;
     position: absolute;
-    top:20px;
+    top:18px;
 }
 
 </style>

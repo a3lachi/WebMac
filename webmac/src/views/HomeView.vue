@@ -5,43 +5,28 @@ import Bar from '../components/Bar.vue';
 export default {
   data() {
     return {
-        toShow: 'yes'
+        toShow: false
     };
   },
   methods: {
     changeMessage(e) {
-        if (e.clientY<20) {
-            this.toShow = 'yes';
-        }
-        else {
-            this.toShow = 'no' ;
-        }
+        this.toShow = e.clientY<18 ? true : false
     },
-    callChangeMessage() {
-      this.changeMessage();
-      
-    }
   },
   components: {
     Bar
   }
 };
-
 </script>
-
-
-
 
 
 <template>
     <div v-on:mouseover=changeMessage   class="container">
-        <img src="/bgrnd.png" />
         <Bar v-bind:show=toShow  v-bind:key=toShow />
+        <img src="/bgrnd.png" />
+        
     </div>
 </template>
-
-
-
 
 
 
