@@ -18,7 +18,7 @@ export default {
 <div   class="bts">
     <div  @click="closeWindow(data)"  class="btn">
         <div class="insdbtn">
-            x
+            <div>o</div>
         </div>
         
     </div>
@@ -42,12 +42,13 @@ export default {
 
 <style>
 .bts{
+    padding-left: 6px;
     position: absolute;
     width:70px;
-    height: 20px;
+    height: 18px;
     left:0;
     top:0;
-    background-color: aquamarine;
+    background-color:rgb(63,62,60);
     z-index: 2;
     display: flex;
     flex-direction: row;
@@ -58,14 +59,18 @@ export default {
     display: flex;
     align-items: center;  
     justify-content: center; 
-    width:100%;
+    width:18px;
+    height: 18px;
     background-color: blueviolet;
     border-radius: 10px;
+    line-height: 18px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .insdbtn{
-    display: inline-block;
     cursor: default;
+    line-height: 18px;
+    text-align: center; 
 }
 
 </style>

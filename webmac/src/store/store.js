@@ -17,7 +17,10 @@ export default {
       tabs: [],
       win:{
         About:WinInfo('About',false,25,30,500,300),
-        Resume:WinInfo('Resume',false,25,20,700,500),
+        Contact:WinInfo('Contact',false,25,20,700,500),
+        APIs:WinInfo('APIs',false,25,20,700,500),
+        Projects:WinInfo('Projects',false,25,20,700,500),
+        Muzik:WinInfo('Muzik',false,25,20,700,500),
       },
     },
     mutations: {
