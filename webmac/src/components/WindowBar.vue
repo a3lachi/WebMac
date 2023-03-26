@@ -4,10 +4,20 @@ import WindowBarButtons from './WindowBarButtons.vue'
 
 export default {
     props:{
-        data:String,
+        data:Object,
     },
 
     methods:{
+    },
+    computed:{
+        btnStyles() {
+            return {
+                "position": "absolute",
+                "text-align":"center",
+                "right":0,
+                "width":`${this.data.width-70}px`,
+            };
+            }
     },
     components:{
         WindowBarButtons,
@@ -21,7 +31,9 @@ export default {
 
 <div   class="windowbar">
 
-    <WindowBarButtons :data="data" />
+    <WindowBarButtons :data="data.text" />
+    <div :style="btnStyles" >{{ data.text }}</div>
+    
 
 </div>
 
@@ -37,23 +49,14 @@ export default {
     margin-bottom:auto;
     width:100%;
     height:20px;
-    background-color: green;
+    background-color: rgb(63,62,60);
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: row;
 }
 
-.title{
-    padding-left:6px;
-}
 
-.bts{
-    position: absolute;
-    width:70px;
-    height: 20px;
-    right:0;
-    top:0;
-    background-color: aquamarine;
-    z-index: 2;
-}
+
 
 </style>
