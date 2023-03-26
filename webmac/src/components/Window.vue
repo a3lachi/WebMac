@@ -3,16 +3,21 @@
 
 <script>
 
+import { mapActions } from 'vuex'
+
 export default {
     props:{
         show: Boolean,
         text: String,
-        left: Number,
-        top: Number,
+        left: String,
+        top: String,
 
     },
     methods:{
-
+        ...mapActions(['closeTab']),
+        handleClick() {
+            this.closeTab('rrrr')
+        },
     },
 
 }
@@ -24,9 +29,8 @@ export default {
 
     <div    v-bind:class="text+'wincntr'"     id="win"      :style = "{ left:`${left}%` , top:`${top}%` }"      >
 
-        <div   class="win"  >
+        <div @click="handleClick" class="win"  >
             {{ text }}
-            {{ left }}
         </div>
 
     </div>

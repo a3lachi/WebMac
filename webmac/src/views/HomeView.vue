@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     changeMessage(e) {
-        this.toShow = e.clientY<18 ? true : false
+        this.toShow = e.clientY<20 ? true : false
     },
   },
   components: {

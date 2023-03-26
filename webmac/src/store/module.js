@@ -8,8 +8,8 @@ export default {
         console.log('WSSLAT',state.tabs)
       },
       pop(state,payload) {
-        console.log('CLOSE WINDOW')
-        state.tabs = state.tabs.filter((elem)=>(elem!=payload))
+        console.log('CLOSE WINDOW',payload)
+        // state.tabs = state.tabs.filter((elem)=>(elem!=payload))
       }
     },
     actions: {

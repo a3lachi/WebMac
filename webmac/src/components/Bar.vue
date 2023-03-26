@@ -9,7 +9,7 @@ export default {
     }
   },
   mounted(){
-    console.log('-----',this.show)
+
   }
 }
 
@@ -41,11 +41,11 @@ export default {
     z-index: 5;
 }
 .faker{
-    height:30px;
+    height:2px;
     width: 100%;
     margin-bottom:bottom;
     position: absolute;
-    top:18px;
+    top:17px;
 }
 
 </style>

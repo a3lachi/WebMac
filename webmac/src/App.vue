@@ -9,6 +9,7 @@ import WindowView from './views/WindowView.vue';
     <HomeView />
     <IconView />
     <WindowView />
+    
   </div>
 
 </template>

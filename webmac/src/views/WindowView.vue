@@ -18,7 +18,8 @@ export default {
 
 <template>
   <div class="windows">
-    <Window text="About" left=30 top=20 />
+    <div class="fakerwin"></div>
+    <Window text="About" left=30 top=20  />
 
   </div>
 </template>
@@ -30,8 +31,16 @@ export default {
   position : absolute;
   width: 100vw;
   height: 100vh;
-  top:0;
+  top:22px;
   left:0;
 }
+
+/* .fakerwin{
+  position : absolute;
+  width: 100vw;
+  height: 1px;
+  top:0px;
+
+} */
 
 </style>
