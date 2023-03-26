@@ -44,8 +44,9 @@ export default {
       getTabs(state) {
         return state.tab;
       },
-      getAbout(state) {
-        return state.About ;
+      getAbout: (state) => (win) => {
+        if (win === 'About')
+          return state.About ;
       }
     }
   }

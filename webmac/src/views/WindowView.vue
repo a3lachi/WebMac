@@ -36,7 +36,7 @@ export default {
       return this.getTabs
     },
     About() {
-      return this.getAbout
+      return this.getAbout('About')
     }
   },
   components:{
