@@ -10,7 +10,7 @@ export default {
     methods:{
     },
     computed:{
-        btnStyles() {
+        barStyles() {
             return {
                 "position": "absolute",
                 "text-align":"center",
@@ -20,7 +20,7 @@ export default {
                 "font-size":"14px",
                 "line-height": "20px",
             };
-            }
+        }
     },
     components:{
         WindowBarButtons,
@@ -35,7 +35,7 @@ export default {
 <div   class="windowbar">
 
     <WindowBarButtons :data="data.text" />
-    <div :style="btnStyles" >
+    <div :style="barStyles" >
         {{ data.text }}
     </div>
     

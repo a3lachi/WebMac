@@ -16,13 +16,10 @@ export default {
 </script>
 
 <template>
-  <div class="windows">
-    <div class="fakerwin"></div>
-    <div v-for="(item, index) in data" :key="index">
+  <div id="windows">
+    <div v-for="(item, index)  in data" :style = "{ zIndex:`${data.zindex}%` , width:'100%' , height:'100vh' , top:'0' , position:'absolute' }" :id="'win'+item.text" :key="index">
       <Window :data="item"  />
     </div>
-    
-
   </div>
 </template>
 
@@ -32,13 +29,21 @@ export default {
 .windows{
   position : absolute;
   width: 100vw;
-  height: 100vh;
+  height: 97.941vh;
   top:22px;
   left:0;
 }
 
 .qq{
   color:white;
+}
+
+
+#main-view{
+  width:100vw;
+  height:100vh;
+  position : absolute;
+  top:0;
 }
 
 </style>

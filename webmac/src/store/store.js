@@ -1,4 +1,6 @@
-const WinInfo = (text,show,left,top,w,h) => {
+
+
+const WinInfo = (text,show,left,top,w,h,zi) => {
   return (
     {
       text:text,
@@ -10,6 +12,7 @@ const WinInfo = (text,show,left,top,w,h) => {
     }
   )
 }
+
 
 
 export default {
@@ -30,8 +33,31 @@ export default {
       },
       open(state,payload) {
         state.win[payload].show = true ;
+        let max = 1
+        for (const itm in state.win) {
+          if (itm.zindex>max) max=zindex
+        }
+        state.win[payload].zindex = max+1 ;
         console.log('OPENING ',payload)
+        const elem = document.getElementById('win'+payload)
+        elem.remove()
+        document.getElementById('windows').append(elem)
+      },
+
+
+      startdrag(state,payload) {
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('DRAGIN',ev.clientX , ev.clientY)
+      },
+      dragover(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('DRAGIN',ev.clientX)
       }
+
+
+
     },
     actions: {
       closeWindow(context,payload) {
@@ -41,6 +67,14 @@ export default {
       openWindow(context,payload) {
         context.commit('open',payload)
       },
+      startDrag(context,payload) {
+        console.log('payld',payload)
+        context.commit('startdrag',payload)
+      }
+      ,
+      dragOver(context,payload) {
+        context.commit('dragover',payload)
+      }
     },
     getters: {
       getWins(state) {
