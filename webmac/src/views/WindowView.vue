@@ -17,7 +17,7 @@ export default {
 
 <template>
   <div id="windows">
-    <div v-for="(item, index)  in data" :style = "{ zIndex:`${data.zindex}%` , width:'100%' , height:'100vh' , top:'0' , position:'absolute' }" :id="'win'+item.text" :key="index">
+    <div v-for="(item, index)  in data" :style = "{ zIndex:`${data.zindex}%` , width:'100%' , height:'100vh' , top:'0' , position:'absolute' }" :id="'win'+item.text" :key="index" class="yyy">
       <Window :data="item"  />
     </div>
   </div>
@@ -32,18 +32,18 @@ export default {
   height: 97.941vh;
   top:22px;
   left:0;
+  transition: none;
+  transition-property: none; 
 }
 
 .qq{
   color:white;
 }
 
-
-#main-view{
-  width:100vw;
-  height:100vh;
-  position : absolute;
-  top:0;
+#yyy{
+  transition: none;
+  transition-property: none; 
 }
+
 
 </style>

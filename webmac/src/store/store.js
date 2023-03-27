@@ -19,7 +19,7 @@ export default {
     state: {
       tabs: [],
       win:{
-        About:WinInfo('About',false,25,30,500,300),
+        About:WinInfo('About',false,250,300,500,300),
         Contact:WinInfo('Contact',false,25,20,700,500),
         APIs:WinInfo('APIs',false,25,20,700,500),
         Projects:WinInfo('Projects',false,25,20,700,500),
@@ -28,6 +28,8 @@ export default {
       drag:{
         x:0,
         y:0,
+        evx:0,
+        evy:0,
       }
     },
     mutations: {
@@ -55,32 +57,41 @@ export default {
         console.log('DRAGIN',ev.clientX , ev.clientY)
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
+
+        
       },
       dragover(state,payload){
         const ev = payload[0]
-        const elem = payload[1]
-        console.log('rrr',ev.clientY - state.drag.y)
-        
+        const elem = payload[1]        
         const lft = state.win[elem].left
         const rght = state.win[elem].top
-        // state.win[elem].top += ev.clientY - state.drag.y
+        console.log('drag',ev.clientY , state.drag.y)
+        
+        
         // state.win[elem].left += ev.clientX - state.drag.x
+        state.drag.evx = ev.clientX
+        state.drag.evy = ev.clientY
+
+
+        state.win[elem].top +=  state.drag.evy - state.drag.y
+        state.win[elem].left +=  state.drag.evx - state.drag.x
+        state.drag.x = ev.clientX
+        state.drag.y = ev.clientY
 
 
       },
       dragend(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('sala')
-        console.log('SALA',ev.clientX , ev.clientY)
 
-        const lft = state.win[elem].left
-        const rght = state.win[elem].top
-        state.win[elem].top += ev.clientY - state.drag.y
-        state.win[elem].left += ev.clientX - state.drag.x
-
-        
-        state.win[elem].show = true
+        // state.win[elem].left += ev.clientX - state.drag.x
+      },
+      dragdrop(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('sala drop')
+        const my = document.getElementById('won'+elem)
+        console.log('rrr',my);
       },
 
 
@@ -102,8 +113,12 @@ export default {
       dragOver(context,payload) {
         context.commit('dragover',payload)
       },
-      dragEnd(context,payload) {
+      dragEndHandler(context,payload) {
+        console.log('sala end')
         context.commit('dragend',payload)
+      },
+      dragDrop(context,payload) {
+        context.commit('dragdrop',payload)
       },
     },
     getters: {

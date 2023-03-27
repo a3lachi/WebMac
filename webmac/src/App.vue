@@ -55,6 +55,8 @@ export default {
 <style>
 div {
   max-height: 100%;
+  transition: none;
+  transition-property: none; 
 }
 
 </style>
