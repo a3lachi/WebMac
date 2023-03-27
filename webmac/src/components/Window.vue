@@ -8,7 +8,7 @@ export default {
         data: Object,
     },
     methods:{
-    ...mapActions(['startDrag','dragOver']),
+    ...mapActions(['startDrag','dragOver','dragEnd']),
     
     
     },
@@ -26,9 +26,9 @@ export default {
 
 <template>
     <div  v-if="data.show === true" class="draggable-element" draggable="true"  
-     @dragstart="startDrag([$event,data.text])" @dragover="dragOver($event,data.text)"
+     @dragstart="startDrag([$event,data.text])" @dragover="dragOver([$event,data.text])"    @dragend="dragEnd[$event,data.text]"   @drop="dragDrop([$event,data.text])"
     id="winn"
-     :style = "{ left:`${data.left}%` , top:`${data.top}%` , width:`${data.width}px` , height:`${data.height}px` , zIndex:`${data.zindex}px` }"    >
+     :style = "{ left:`${data.left}px` , top:`${data.top}px` , width:`${data.width}px` , height:`${data.height}px` , zIndex:`${data.zindex}px` }"    >
 
         <WindowBar :data="data" />
         <WindowDialog :data="data" />

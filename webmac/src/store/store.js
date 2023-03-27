@@ -25,6 +25,10 @@ export default {
         Projects:WinInfo('Projects',false,25,20,700,500),
         Muzik:WinInfo('Muzik',false,25,20,700,500),
       },
+      drag:{
+        x:0,
+        y:0,
+      }
     },
     mutations: {
       close(state,payload) {
@@ -49,12 +53,35 @@ export default {
         const ev = payload[0]
         const elem = payload[1]
         console.log('DRAGIN',ev.clientX , ev.clientY)
+        state.drag.x = ev.clientX
+        state.drag.y = ev.clientY
       },
       dragover(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('DRAGIN',ev.clientX)
-      }
+        console.log('rrr',ev.clientY - state.drag.y)
+        
+        const lft = state.win[elem].left
+        const rght = state.win[elem].top
+        // state.win[elem].top += ev.clientY - state.drag.y
+        // state.win[elem].left += ev.clientX - state.drag.x
+
+
+      },
+      dragend(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('sala')
+        console.log('SALA',ev.clientX , ev.clientY)
+
+        const lft = state.win[elem].left
+        const rght = state.win[elem].top
+        state.win[elem].top += ev.clientY - state.drag.y
+        state.win[elem].left += ev.clientX - state.drag.x
+
+        
+        state.win[elem].show = true
+      },
 
 
 
@@ -74,7 +101,10 @@ export default {
       ,
       dragOver(context,payload) {
         context.commit('dragover',payload)
-      }
+      },
+      dragEnd(context,payload) {
+        context.commit('dragend',payload)
+      },
     },
     getters: {
       getWins(state) {
