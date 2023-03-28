@@ -77,6 +77,7 @@ export default {
         state.win[elem].left +=  state.drag.evx - state.drag.x
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
+        ev.preventDefault()
 
 
       },
