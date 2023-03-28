@@ -59,6 +59,9 @@ export default {
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
         state.drag.view.push(elem)
+        const eleem = document.getElementById('win'+elem)
+        eleem.remove()
+        document.getElementById('windows').append(eleem)
         
       },
       dragover(state,payload){
