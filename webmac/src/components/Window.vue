@@ -51,7 +51,7 @@ export default {
     transition-property: none; 
     position : absolute;
     top:20px;
-    opacity: 0.96;
+    opacity: 0.975;
     background-color: #c2bfbf;
     outline-style: solid;
     z-index: 50;
