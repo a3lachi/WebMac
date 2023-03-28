@@ -26,6 +26,7 @@ export default {
         Muzik:WinInfo('Muzik',false,25,20,700,500),
       },
       drag:{
+        view:[],
         x:0,
         y:0,
         evx:0,
@@ -57,12 +58,13 @@ export default {
         console.log('DRAGIN',ev.clientX , ev.clientY)
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
-
+        state.drag.view.push(elem)
         
       },
       dragover(state,payload){
+        
         const ev = payload[0]
-        const elem = payload[1]        
+        const elem = state.drag.view[0] // payload[1]        
         const lft = state.win[elem].left
         const rght = state.win[elem].top
         console.log('drag',ev.clientY , state.drag.y)
@@ -77,22 +79,31 @@ export default {
         state.win[elem].left +=  state.drag.evx - state.drag.x
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
-        ev.preventDefault()
+        
 
+        if (state.win[elem].top<0) 
+          state.win[elem].top  = 0
+        if (state.win[elem].left<0) 
+          state.win[elem].left  = 0
+
+        ev.preventDefault()
 
       },
       dragend(state,payload){
         const ev = payload[0]
         const elem = payload[1]
+        state.drag.view.pop()
+        const eleem = document.getElementById('win'+elem)
+        eleem.remove()
+        document.getElementById('windows').append(eleem)
+        ev.preventDefault()
 
         // state.win[elem].left += ev.clientX - state.drag.x
       },
       dragdrop(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('sala drop')
-        const my = document.getElementById('won'+elem)
-        console.log('rrr',my);
+
       },
       view(state,payload){
         console.log('bti',payload)
