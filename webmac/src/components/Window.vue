@@ -8,7 +8,7 @@ export default {
         data: Object,
     },
     methods:{
-    ...mapActions(['startDrag','dragOver','dragEndHandler','dragDrop']),
+    ...mapActions(['startDrag','dragOver','dragEndHandler','dragDrop','mainViewWindow']),
     
     
     },
@@ -26,9 +26,11 @@ export default {
 
 <template>
     <div  v-if="data.show === true" class="draggable-element" draggable="true"  :ref="data.text" 
-     @dragstart="startDrag([$event,data.text])" @dragover="dragOver([$event,data.text])"    @dragend="dragEndHandler([$event,data.text])"   @drop="dragDrop([$event,data.text])"
-    id="wion"
-     :style = "{ left:`${data.left}px` , top:`${data.top}px` , width:`${data.width}px` , height:`${data.height}px` , zIndex:`${data.zindex}px` }"    >
+      @dragstart="startDrag([$event,data.text])" @dragover="dragOver([$event,data.text])" 
+      @dragend="dragEndHandler([$event,data.text])"   @drop="dragDrop([$event,data.text])"
+      @click="mainViewWindow(data.text)"
+      id="wion"
+      :style = "{ left:`${data.left}px` , top:`${data.top}px` , width:`${data.width}px` , height:`${data.height}px` , zIndex:`${data.zindex}px` }"    >
 
         <WindowBar :data="data" />
         <WindowDialog :data="data" />
@@ -49,6 +51,7 @@ export default {
     transition-property: none; 
     position : absolute;
     top:20px;
+    opacity: 0.96;
     background-color: #c2bfbf;
     outline-style: solid;
     z-index: 50;

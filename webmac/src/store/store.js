@@ -94,7 +94,9 @@ export default {
         const my = document.getElementById('won'+elem)
         console.log('rrr',my);
       },
-
+      view(state,payload){
+        console.log('brkti',payload)
+      },
 
 
     },
@@ -120,6 +122,9 @@ export default {
       },
       dragDrop(context,payload) {
         context.commit('dragdrop',payload)
+      },
+      mainViewWindow(context,payload) {
+        context.commit('view',payload)
       },
     },
     getters: {

@@ -13,7 +13,7 @@ export default {
 
 <template>
 <div   class="aboutdialog">
-    {{ data.text }}
+    {{ data.text }} koool
 </div>
 
 
@@ -23,6 +23,7 @@ export default {
 <style>
 
 .aboutdialog{
+    opacity: 1;
     width: 100%;
     height:100%
 }
