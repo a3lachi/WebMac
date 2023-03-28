@@ -96,6 +96,9 @@ export default {
       },
       view(state,payload){
         console.log('bti',payload)
+        const elem = document.getElementById('win'+payload)
+        elem.remove()
+        document.getElementById('windows').append(elem)
       },
 
 
