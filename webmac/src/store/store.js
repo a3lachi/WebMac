@@ -95,7 +95,7 @@ export default {
         console.log('rrr',my);
       },
       view(state,payload){
-        console.log('brkti',payload)
+        console.log('bti',payload)
       },
 
 
