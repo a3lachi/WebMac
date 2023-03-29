@@ -85,11 +85,11 @@ export default {
           elemm.remove()
           document.getElementById('windows').append(elemm)
 
-          
+          console.log(elemm.children)
           state.drag.x = ev.clientX
           state.drag.y = ev.clientY
-          document.addEventListener('mousemove', this.mouseMove);
-          document.addEventListener('mouseup', this.mouseUp);
+          elemm.addEventListener('mousemove', this.mouseMove);
+          elemm.addEventListener('mouseup', this.mouseUp);
         }
       },
       mousemove(state,payload){
