@@ -16,11 +16,12 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
 }
 
 const isOnBorder = (borderSize,event,elem) => {
-  console.log('elem',elem)
+  
   const elemm = document.getElementById('win'+elem)
   const rect = elemm.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
+  console.log('hdatyat',rect.left,rect.left)
   return (
     x < borderSize ||
     y < borderSize ||
