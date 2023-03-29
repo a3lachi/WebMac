@@ -100,10 +100,11 @@ export default {
         }
       },
       mousemove(state,payload){
+        const ev = payload[0]
+        const elem = state.drag.view[0]
         if(state.drag.status === true) {
 
-          const ev = payload[0]
-          const elem = state.drag.view[0]
+          
           state.drag.evx = ev.clientX
           state.drag.evy = ev.clientY
 
@@ -120,7 +121,13 @@ export default {
 
         }
         if ( state.resize.status === true ) {
-
+          const deltaX = ev.clientX - this.startX;
+          const deltaY = ev.clientY - this.startY;
+          this.width = Math.max(
+            this.minWidth,
+            Math.min(this.maxWidth, this.startWidth + deltaX)
+          );
+          
         }
       },
       mouseup(state,payload){
