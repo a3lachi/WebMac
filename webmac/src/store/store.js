@@ -90,6 +90,8 @@ export default {
           state.resize.status = true
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
+
+          state.resize.evw = elemm.width
         }
         else {
           state.drag.view.pop()
