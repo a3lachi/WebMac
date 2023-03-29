@@ -15,20 +15,7 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
   )
 }
 
-const isOnBorder = (borderSize,event,elem,left,top) => {
-  
-  const elemm = document.getElementById('win'+elem)
-  const rect = elemm.getBoundingClientRect();
-  const x = event.clientX - left;
-  const y = event.clientY - top;
-  console.log('hdatyat',rect.left,rect.left)
-  return (
-    x < borderSize ||
-    y < borderSize ||
-    x > rect.width - borderSize ||
-    y > rect.height - borderSize
-  );
-}
+
 
 export default {
 
@@ -114,7 +101,23 @@ export default {
 
           ev.preventDefault()
 
-        }
+        },
+        isOnBorder(state,payload){
+          const ev = payload[0]
+          const elem = state.drag.view[0]
+  
+          const elemm = document.getElementById('win'+elem)
+          const rect = elemm.getBoundingClientRect();
+          const x = event.clientX - left;
+          const y = event.clientY - top;
+          console.log('hdatyat',rect.left,rect.left)
+          return (
+            x < borderSize ||
+            y < borderSize ||
+            x > rect.width - borderSize ||
+            y > rect.height - borderSize
+          );
+        },
         
         
       },
