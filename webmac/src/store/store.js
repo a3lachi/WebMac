@@ -129,6 +129,7 @@ export default {
         state.drag.y = ev.clientY
       },
       mousemove(state,payload){
+        console.log('mouse move')
         if(state.drag.status === true) {
 
           const ev = payload[0]
