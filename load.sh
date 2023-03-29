@@ -3,7 +3,7 @@ rrr() { git add . ; git commit -m "code update"$1 ; git push ;}
 
 i="40"
 
-while [ $i -lt 60 ]
+while [ $i -lt 80 ]
 do
 rrr $i;
 sleep 80;
