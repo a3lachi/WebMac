@@ -80,19 +80,24 @@ export default {
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        state.drag.view.pop()
-        state.drag.view.push(elem)
+        if (this.isOnBorder(ev)) {
+          console.log('on border')
+        }
+        else {
+          state.drag.view.pop()
+          state.drag.view.push(elem)
 
-        state.drag.status = true
+          state.drag.status = true
 
 
-        const elemer = document.getElementById('win'+elem)
-        elemer.remove()
-        document.getElementById('windows').append(elemer)
+          const elemer = document.getElementById('win'+elem)
+          elemer.remove()
+          document.getElementById('windows').append(elemer)
 
-        
-        state.drag.x = ev.clientX
-        state.drag.y = ev.clientY
+          
+          state.drag.x = ev.clientX
+          state.drag.y = ev.clientY
+        }
       },
       mousemove(state,payload){
         if(state.drag.status === true) {
