@@ -31,7 +31,7 @@ export default {
       },
       minWidth: 50,
       minHeight: 50,
-      maxWidth: 500,
+      maxWidth: 5000,
       maxHeight: 500,
       mouse:{
         x:0,
@@ -91,7 +91,7 @@ export default {
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
 
-          state.resize.evw = elemm.width
+          state.resize.evw = state.win[elem].width
         }
         else {
           state.drag.view.pop()
