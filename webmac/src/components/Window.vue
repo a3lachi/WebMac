@@ -34,7 +34,6 @@ export default {
 
 <template>
     <div  v-if="data.show === true"    :ref="data.text" 
-      
        
       @mousedown="mouseDown([$event,data.text])"  @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])"    
       id="wion"
