@@ -44,8 +44,8 @@ export default {
 
     
     methods:{
-      isOnBorder(event) {
-        const rect = this.$el.getBoundingClientRect();
+      isOnBorder(event,elem) {
+        const rect = elem.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         return (
