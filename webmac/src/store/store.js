@@ -15,7 +15,17 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
   )
 }
 
-
+isOnBorder(event,elem) {
+  const rect = elem.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  return (
+    x < this.borderSize ||
+    y < this.borderSize ||
+    x > rect.width - this.borderSize ||
+    y > rect.height - this.borderSize
+  );
+}
 
 export default {
 
@@ -42,23 +52,6 @@ export default {
 
 
 
-    
-    methods:{
-      isOnBorder(event,elem) {
-        const rect = elem.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        return (
-          x < this.borderSize ||
-          y < this.borderSize ||
-          x > rect.width - this.borderSize ||
-          y > rect.height - this.borderSize
-        );
-      },
-    },
-
-
-
     mutations: {
       close(state,payload) {
         state.win[payload].show = false ;
@@ -80,7 +73,7 @@ export default {
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        if (this.isOnBorder(ev)) {
+        if (isOnBorder(ev)) {
           console.log('on border')
         }
         else {
