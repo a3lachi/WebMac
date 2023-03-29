@@ -1,19 +1,38 @@
 
 
 <script>
+import Dialog from './Dialog.vue'
 export default {
     props:{
         data:Object,
     },
+    computed:{
+        brr(){
+            console.log('oui')
+        }
+    },
+
+    components:{
+        Dialog,
+    }
     
 }
+
+console.log('oui')
 </script>
 
 
 
 <template>
-<div   class="aboutdialog">
-    {{ data.text }} koool
+<div   class="aboutdialog"    >
+    <Dialog :width="200" :height="100"    >
+        Brrrrrrrr
+    </Dialog> 
+    <Dialog :width="200" :height="100"    >
+        Brrrrrrrr
+    </Dialog> 
+    <Dialog :width="200" :height="100"     />
+    
 </div>
 
 
@@ -25,7 +44,13 @@ export default {
 .aboutdialog{
     opacity: 1;
     width: 100%;
-    height:100%
+    height:auto;
+    min-height:auto;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
 }
 
 </style>

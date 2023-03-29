@@ -41,8 +41,7 @@ export default {
 }
 
 #yyy{
-  transition: none;
-  transition-property: none; 
+  min-height: auto;
 }
 
 

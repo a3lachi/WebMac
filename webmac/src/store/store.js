@@ -1,6 +1,6 @@
 
 
-const WinInfo = (text,show,left,top,w,h,zi) => {
+const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
   return (
     {
       text:text,
@@ -9,6 +9,8 @@ const WinInfo = (text,show,left,top,w,h,zi) => {
       top:top,
       width:w,
       height:h,
+      gap:gp,
+      paddingY:paddingY
     }
   )
 }
@@ -16,14 +18,15 @@ const WinInfo = (text,show,left,top,w,h,zi) => {
 
 
 export default {
+
+
     state: {
-      tabs: [],
       win:{
-        About:WinInfo('About',false,250,300,500,300),
-        Contact:WinInfo('Contact',false,25,20,700,500),
-        APIs:WinInfo('APIs',false,25,20,700,500),
-        Projects:WinInfo('Projects',false,25,20,700,500),
-        Muzik:WinInfo('Muzik',false,25,20,700,500),
+        About:WinInfo('About',false,250,300,500,300,10,20),
+        Contact:WinInfo('Contact',false,25,20,400,200,0,0),
+        APIs:WinInfo('APIs',false,25,20,700,500,0,0),
+        Projects:WinInfo('Projects',false,25,20,700,500,0,0),
+        Muzik:WinInfo('Muzik',false,25,20,150,500,0,0),
       },
       drag:{
         view:[],
@@ -33,10 +36,13 @@ export default {
         evy:0,
       }
     },
+
+
+
+
     mutations: {
       close(state,payload) {
         state.win[payload].show = false ;
-        console.log('CLOSING ',payload)
       },
       open(state,payload) {
         state.win[payload].show = true ;
@@ -45,38 +51,38 @@ export default {
           if (itm.zindex>max) max=zindex
         }
         state.win[payload].zindex = max+1 ;
-        console.log('OPENING ',payload)
         const elem = document.getElementById('win'+payload)
         elem.remove()
         document.getElementById('windows').append(elem)
       },
-
-
       startdrag(state,payload) {
+
         const ev = payload[0]
         const elem = payload[1]
-        console.log('DRAGIN',ev.clientX , ev.clientY)
-        state.drag.x = ev.clientX
-        state.drag.y = ev.clientY
+        state.drag.view.pop()
         state.drag.view.push(elem)
+        
         const eleem = document.getElementById('win'+elem)
         eleem.remove()
         document.getElementById('windows').append(eleem)
+        console.log('bda ydraggui',ev.clientY - state.drag.y)
+        if( state.win[elem].top==0 && ev.clientY - state.drag.y<0) {
+          console.log('le cas')
+          ev.preventDefault()
+        }
+        
         
       },
       dragover(state,payload){
         
+        
         const ev = payload[0]
-        const elem = state.drag.view[0] // payload[1]        
-        const lft = state.win[elem].left
-        const rght = state.win[elem].top
-        console.log('drag',ev.clientY , state.drag.y)
+        const elem = state.drag.view[0] // payload[1]  
         
+        document.getElementById('win'+elem).style.cursor = 'auto'
         
-        // state.win[elem].left += ev.clientX - state.drag.x
         state.drag.evx = ev.clientX
         state.drag.evy = ev.clientY
-
 
         state.win[elem].top +=  state.drag.evy - state.drag.y
         state.win[elem].left +=  state.drag.evx - state.drag.x
@@ -86,33 +92,32 @@ export default {
 
         if (state.win[elem].top<0) 
           state.win[elem].top  = 0
-        if (state.win[elem].left<0) 
-          state.win[elem].left  = 0
 
         ev.preventDefault()
 
-      },
-      dragend(state,payload){
-        const ev = payload[0]
-        const elem = payload[1]
-        state.drag.view.pop()
-        const eleem = document.getElementById('win'+elem)
-        eleem.remove()
-        document.getElementById('windows').append(eleem)
-        ev.preventDefault()
 
-        // state.win[elem].left += ev.clientX - state.drag.x
       },
       dragdrop(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-
+        state.drag.view.pop()
+        // ev.preventDefault()
       },
+      
       view(state,payload){
-        console.log('bti',payload)
         const elem = document.getElementById('win'+payload)
         elem.remove()
         document.getElementById('windows').append(elem)
+      },
+      mousedown(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('Mouse down on',elem)
+        const elemer = document.getElementById('win'+elem)
+        elemer.remove()
+        document.getElementById('windows').append(elemer)
+        state.drag.x = ev.clientX
+        state.drag.y = ev.clientY
       },
 
 
@@ -126,23 +131,23 @@ export default {
         context.commit('open',payload)
       },
       startDrag(context,payload) {
-        console.log('payld',payload)
         context.commit('startdrag',payload)
       }
       ,
       dragOver(context,payload) {
         context.commit('dragover',payload)
       },
-      dragEndHandler(context,payload) {
-        console.log('sala end')
-        context.commit('dragend',payload)
-      },
       dragDrop(context,payload) {
+        console.log('sala drop')
         context.commit('dragdrop',payload)
       },
       mainViewWindow(context,payload) {
         context.commit('view',payload)
       },
+      mouseDown(context,payload) {
+        context.commit('mousedown',payload)
+      },
+      
     },
     getters: {
       getWins(state) {
