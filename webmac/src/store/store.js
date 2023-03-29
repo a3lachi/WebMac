@@ -58,6 +58,23 @@ export default {
         document.getElementById('windows').append(elem)
       },
 
+      isOnBorder(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+  
+        const elemm = document.getElementById('win'+elem)
+        const rect = elemm.getBoundingClientRect();
+        const x = ev.clientX - state.win[elem].top;
+        const y = ev.clientY - state.win[elem].left;
+        console.log('hdatyat',rect.left,rect.left)
+        return (
+          x < this.borderSize ||
+          y < this.borderSize ||
+          x > rect.width - this.borderSize ||
+          y > rect.height - this.borderSize
+        );
+      },
+
 
 
       mousedown(state,payload){
@@ -109,22 +126,7 @@ export default {
         
         state.drag.status = false        
       },
-      isOnBorder(state,payload){
-        const ev = payload[0]
-        const elem = payload[1]
-  
-        const elemm = document.getElementById('win'+elem)
-        const rect = elemm.getBoundingClientRect();
-        const x = ev.clientX - left;
-        const y = ev.clientY - top;
-        console.log('hdatyat',rect.left,rect.left)
-        return (
-          x < borderSize ||
-          y < borderSize ||
-          x > rect.width - borderSize ||
-          y > rect.height - borderSize
-        );
-      },
+      
 
 
     },
