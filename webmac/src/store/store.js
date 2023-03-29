@@ -21,6 +21,7 @@ export default {
 
 
     state: {
+      bordersize:9,
       win:{
         About:WinInfo('About',false,250,300,500,300,10,20),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
@@ -36,8 +37,6 @@ export default {
         evx:0,
         evy:0,
       },
-      bordersize:6
-      ,
     },
 
 
@@ -68,12 +67,11 @@ export default {
         const rect = elemm.getBoundingClientRect();
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
-        console.log('hdatyat',typeof x, this.bordersize,y)
         if(
-          x < this.bordersize ||
-          y < this.bordersize ||
-          x > rect.width - this.bordersize ||
-          y > rect.height - this.bordersize
+          x < state.bordersize ||
+          y < state.bordersize ||
+          x > rect.width - state.bordersize ||
+          y > rect.height - state.bordersize
         ){
           console.log('on border')
         }
