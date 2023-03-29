@@ -29,6 +29,10 @@ export default {
         Projects:WinInfo('Projects',false,25,20,700,500,0,0),
         Muzik:WinInfo('Muzik',false,25,20,150,500,0,0),
       },
+      mouse:{
+        x:0,
+        y:0,
+      }
       drag:{
         status:false,
         view:[],
