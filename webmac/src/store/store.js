@@ -122,6 +122,7 @@ export default {
 
         }
         if ( state.resize.status === true ) {
+          console.log('moving on border')
           const deltaX = ev.clientX - this.startX;
           const deltaY = ev.clientY - this.startY;
           this.width = Math.max(
