@@ -32,7 +32,7 @@ export default {
       minWidth: 50,
       minHeight: 50,
       maxWidth: 5000,
-      maxHeight: 500,
+      maxHeight: 5000,
       mouse:{
         x:0,
         y:0,
@@ -92,6 +92,7 @@ export default {
           state.mouse.y = ev.clientY
 
           state.resize.evw = state.win[elem].width
+          state.resize.evh = state.win[elem].height
         }
         else {
           state.drag.view.pop()
@@ -103,7 +104,6 @@ export default {
           elemm.remove()
           document.getElementById('windows').append(elemm)
 
-          const draggable = elemm.children[0]
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
         }
@@ -133,12 +133,14 @@ export default {
           console.log('moving on border')
           const deltaX = ev.clientX - state.mouse.x;
           const deltaY = ev.clientY - state.mouse.y;
-          console.log(state.win[elem],state.resize.evw)
-          // state.mouse.x = ev.clientX
-          // state.mouse.y = ev.clientY
+
           state.win[elem].width = Math.max(
             state.minWidth,
             Math.min(state.maxWidth, state.resize.evw + deltaX)
+          );
+          state.win[elem].height = Math.max(
+            state.minHeight,
+            Math.min(state.maxHeight, state.resize.evh + deltaY)
           );
           
         }
