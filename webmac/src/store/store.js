@@ -132,7 +132,7 @@ export default {
         if(state.drag.status === true) {
 
           const ev = payload[0]
-          const elem = payload[1]
+          const elem = state.drag.view[0]
           console.log('Mouse move on',elem)
           state.drag.evx = ev.clientX
           state.drag.evy = ev.clientY
