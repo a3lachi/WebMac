@@ -85,11 +85,12 @@ export default {
           elemm.remove()
           document.getElementById('windows').append(elemm)
 
-          console.log(elemm.children.wion)
+          const draggable = elemm.children[0]
+          console.log(draggable)
           state.drag.x = ev.clientX
           state.drag.y = ev.clientY
-          elemm.children.wion.wionaddEventListener('mousemove', this.mouseMove);
-          elemm.children.wion.wionaddEventListener('mouseup', this.mouseUp);
+          // wionaddEventListener('mousemove', this.mouseMove);
+          // wionaddEventListener('mouseup', this.mouseUp);
         }
       },
       mousemove(state,payload){
