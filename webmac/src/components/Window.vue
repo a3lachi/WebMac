@@ -10,7 +10,7 @@ export default {
         data: Object,
     },
     methods:{
-    ...mapActions(['startDrag','dragOver', 'dragDrop','mainViewWindow','mouseDown']),
+    ...mapActions(['startDrag','dragOver', 'dragDrop','mainViewWindow','mouseDown','mouseMove','mouseUp']),
     
     
     },

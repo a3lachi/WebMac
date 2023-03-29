@@ -119,6 +119,26 @@ export default {
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
       },
+      mousemove(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('Mouse down on',elem)
+        const elemer = document.getElementById('win'+elem)
+        elemer.remove()
+        document.getElementById('windows').append(elemer)
+        state.drag.x = ev.clientX
+        state.drag.y = ev.clientY
+      },
+      mouseup(state,payload){
+        const ev = payload[0]
+        const elem = payload[1]
+        console.log('Mouse down on',elem)
+        const elemer = document.getElementById('win'+elem)
+        elemer.remove()
+        document.getElementById('windows').append(elemer)
+        state.drag.x = ev.clientX
+        state.drag.y = ev.clientY
+      },
 
 
     },
@@ -146,6 +166,12 @@ export default {
       },
       mouseDown(context,payload) {
         context.commit('mousedown',payload)
+      },
+      mouseMove(context,payload) {
+        context.commit('mousemove',payload)
+      },
+      mouseUp(context,payload) {
+        context.commit('mouseup',payload)
       },
       
     },
