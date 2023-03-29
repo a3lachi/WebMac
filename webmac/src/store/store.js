@@ -36,7 +36,7 @@ export default {
         evx:0,
         evy:0,
       },
-      borderSize=6
+      borderSize:6
     },
 
 
