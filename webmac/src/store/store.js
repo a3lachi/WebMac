@@ -67,7 +67,7 @@ export default {
         const rect = elemm.getBoundingClientRect();
         const x = ev.clientX - state.win[elem].top;
         const y = ev.clientY - state.win[elem].left;
-        console.log('hdatyat',rect)
+        console.log('hdatyat',x,y)
         if(
           x < this.borderSize ||
           y < this.borderSize ||
