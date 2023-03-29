@@ -15,7 +15,7 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
   )
 }
 
-isOnBorder(event,elem) {
+const isOnBorder = (event,elem) => {
   const rect = elem.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
@@ -73,7 +73,7 @@ export default {
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        if (isOnBorder(ev)) {
+        if (isOnBorder(ev,elem)) {
           console.log('on border')
         }
         else {
