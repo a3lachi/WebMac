@@ -30,12 +30,19 @@ export default {
         Muzik:WinInfo('Muzik',false,25,20,150,500,0,0),
       },
       drag:{
-        view:[],
         status:false,
+        view:[],
         x:0,
         y:0,
         evx:0,
         evy:0,
+      },
+      resize:{
+        status:false,
+        evw:0,
+        evh:0,
+        x:0,
+        y:0,
       },
     },
 
@@ -74,6 +81,7 @@ export default {
           y > rect.height - state.bordersize
         ){
           console.log('on border',elemm)
+          state.resize.status = true
         }
         else {
           state.drag.view.pop()
@@ -111,6 +119,9 @@ export default {
             state.win[elem].top  = 0
 
           ev.preventDefault()
+
+        }
+        if ( state.resize.status === true ) {
 
         }
       },
