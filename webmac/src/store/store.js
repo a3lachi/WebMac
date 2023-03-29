@@ -130,6 +130,8 @@ export default {
           const deltaX = ev.clientX - state.mouse.x;
           const deltaY = ev.clientY - state.mouse.y;
           console.log(deltaX)
+          // state.mouse.x = ev.clientX
+          // state.mouse.y = ev.clientY
           // state.win[elem].width = Math.max(
           //   state.minWidth,
           //   Math.min(state.maxWidth, state.resize.evw + deltaX)
