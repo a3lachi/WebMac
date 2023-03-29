@@ -97,8 +97,6 @@ export default {
           console.log(draggable)
           state.drag.x = ev.clientX
           state.drag.y = ev.clientY
-          elemm.children[0].addEventListener('mousemove', this.mouseMove);
-          elemm.children[0].addEventListener('mouseup', this.mouseUp);
         }
       },
       mousemove(state,payload){
