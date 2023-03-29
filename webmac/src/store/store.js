@@ -36,7 +36,8 @@ export default {
         evx:0,
         evy:0,
       },
-      borderSize:6
+      bordersize:6
+      ,
     },
 
 
@@ -67,12 +68,12 @@ export default {
         const rect = elemm.getBoundingClientRect();
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
-        console.log('hdatyat',typeof x,typeof this.borderSize,y)
+        console.log('hdatyat',typeof x, this.bordersize,y)
         if(
-          x < this.borderSize ||
-          y < this.borderSize ||
-          x > rect.width - this.borderSize ||
-          y > rect.height - this.borderSize
+          x < this.bordersize ||
+          y < this.bordersize ||
+          x > rect.width - this.bordersize ||
+          y > rect.height - this.bordersize
         ){
           console.log('on border')
         }
