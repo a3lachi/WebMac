@@ -108,7 +108,7 @@ export default {
       },
       mousemove(state,payload){
         const ev = payload[0]
-        const elem = state.drag.view[0]
+        const elem = payload[1]
         if(state.drag.status === true) {
 
           
@@ -131,13 +131,13 @@ export default {
           console.log('moving on border')
           const deltaX = ev.clientX - state.mouse.x;
           const deltaY = ev.clientY - state.mouse.y;
-          console.log(state.win[elem])
+          console.log(state.win[elem],state.resize.evw)
           // state.mouse.x = ev.clientX
           // state.mouse.y = ev.clientY
-          // state.win[elem].width = Math.max(
-          //   state.minWidth,
-          //   Math.min(state.maxWidth, state.resize.evw + deltaX)
-          // );
+          state.win[elem].width = Math.max(
+            state.minWidth,
+            Math.min(state.maxWidth, state.resize.evw + deltaX)
+          );
           
         }
       },
