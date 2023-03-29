@@ -32,12 +32,10 @@ export default {
       mouse:{
         x:0,
         y:0,
-      }
+      },
       drag:{
         status:false,
         view:[],
-        x:0,
-        y:0,
         evx:0,
         evy:0,
       },
@@ -84,7 +82,7 @@ export default {
           x > rect.width - state.bordersize ||
           y > rect.height - state.bordersize
         ){
-          console.log('on border',elemm)
+          console.log('on border')
           state.resize.status = true
         }
         else {
@@ -99,8 +97,8 @@ export default {
 
           const draggable = elemm.children[0]
           console.log(draggable)
-          state.drag.x = ev.clientX
-          state.drag.y = ev.clientY
+          state.mouse.x = ev.clientX
+          state.mouse.y = ev.clientY
         }
       },
       mousemove(state,payload){
@@ -112,10 +110,10 @@ export default {
           state.drag.evx = ev.clientX
           state.drag.evy = ev.clientY
 
-          state.win[elem].top +=  state.drag.evy - state.drag.y
-          state.win[elem].left +=  state.drag.evx - state.drag.x
-          state.drag.x = ev.clientX
-          state.drag.y = ev.clientY
+          state.win[elem].top +=  state.drag.evy - state.mouse.y
+          state.win[elem].left +=  state.drag.evx - state.mouse.x
+          state.mouse.x = ev.clientX
+          state.mouse.y = ev.clientY
           
 
           if (state.win[elem].top<0) 
