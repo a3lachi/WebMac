@@ -29,6 +29,10 @@ export default {
         Projects:WinInfo('Projects',false,25,20,700,500,0,0),
         Muzik:WinInfo('Muzik',false,25,20,150,500,0,0),
       },
+      minWidth: 50,
+      minHeight: 50,
+      maxWidth: 500,
+      maxHeight: 500,
       mouse:{
         x:0,
         y:0,
@@ -123,11 +127,11 @@ export default {
         }
         if ( state.resize.status === true ) {
           console.log('moving on border')
-          const deltaX = ev.clientX - this.startX;
-          const deltaY = ev.clientY - this.startY;
+          const deltaX = ev.clientX - state.x;
+          const deltaY = ev.clientY - state.y;
           state.win[elem].width = Math.max(
-            this.minWidth,
-            Math.min(this.maxWidth, this.resize.evw + deltaX)
+            state.minWidth,
+            Math.min(state.maxWidth, state.resize.evw + deltaX)
           );
           
         }
