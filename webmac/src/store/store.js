@@ -56,64 +56,9 @@ export default {
         elem.remove()
         document.getElementById('windows').append(elem)
       },
-      startdrag(state,payload) {
-
-        const ev = payload[0]
-        const elem = payload[1]
-        state.drag.view.pop()
-        state.drag.view.push(elem)
-        
-        const eleem = document.getElementById('win'+elem)
-        eleem.remove()
-        document.getElementById('windows').append(eleem)
-        console.log('bda ydraggui',ev.clientY - state.drag.y)
-        if( state.win[elem].top==0 && ev.clientY - state.drag.y<0) {
-          console.log('le cas')
-          ev.preventDefault()
-        }
-        
-        
-      },
-      dragover(state,payload){
-        
-        
-        const ev = payload[0]
-        const elem = state.drag.view[0] // payload[1]  
-        
-        document.getElementById('win'+elem).style.cursor = 'auto'
-        
-        state.drag.evx = ev.clientX
-        state.drag.evy = ev.clientY
-
-        state.win[elem].top +=  state.drag.evy - state.drag.y
-        state.win[elem].left +=  state.drag.evx - state.drag.x
-        state.drag.x = ev.clientX
-        state.drag.y = ev.clientY
-        
-
-        if (state.win[elem].top<0) 
-          state.win[elem].top  = 0
-
-        ev.preventDefault()
-
-
-      },
-      dragdrop(state,payload){
-        const ev = payload[0]
-        const elem = payload[1]
-        state.drag.view.pop()
-        // ev.preventDefault()
-      },
-      
-      view(state,payload){
-        const elem = document.getElementById('win'+payload)
-        elem.remove()
-        document.getElementById('windows').append(elem)
-      },
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('Mouse down on',elem)
         state.drag.view.pop()
         state.drag.view.push(elem)
 
@@ -129,12 +74,10 @@ export default {
         state.drag.y = ev.clientY
       },
       mousemove(state,payload){
-        console.log('mouse move')
         if(state.drag.status === true) {
 
           const ev = payload[0]
           const elem = state.drag.view[0]
-          console.log('Mouse move on',elem)
           state.drag.evx = ev.clientX
           state.drag.evy = ev.clientY
 
@@ -157,9 +100,7 @@ export default {
         const ev = payload[0]
         const elem = payload[1]
         
-        state.drag.status = false
-        console.log('Mouse up on',elem)
-        
+        state.drag.status = false        
       },
 
 
@@ -171,20 +112,6 @@ export default {
 
       openWindow(context,payload) {
         context.commit('open',payload)
-      },
-      startDrag(context,payload) {
-        context.commit('startdrag',payload)
-      }
-      ,
-      dragOver(context,payload) {
-        context.commit('dragover',payload)
-      },
-      dragDrop(context,payload) {
-        console.log('sala drop')
-        context.commit('dragdrop',payload)
-      },
-      mainViewWindow(context,payload) {
-        context.commit('view',payload)
       },
       mouseDown(context,payload) {
         context.commit('mousedown',payload)
