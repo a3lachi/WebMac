@@ -35,9 +35,27 @@ export default {
         y:0,
         evx:0,
         evy:0,
-      }
+      },
+      borderSize=6
     },
 
+
+
+
+    
+    methods:{
+      isOnBorder(event) {
+        const rect = this.$el.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        return (
+          x < this.borderSize ||
+          y < this.borderSize ||
+          x > rect.width - this.borderSize ||
+          y > rect.height - this.borderSize
+        );
+      },
+    },
 
 
 
@@ -56,6 +74,9 @@ export default {
         elem.remove()
         document.getElementById('windows').append(elem)
       },
+
+
+
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
@@ -105,6 +126,9 @@ export default {
 
 
     },
+
+
+
     actions: {
       closeWindow(context,payload) {
         context.commit('close',payload)
@@ -124,6 +148,11 @@ export default {
       },
       
     },
+
+
+
+
+
     getters: {
       getWins(state) {
         return state.win
