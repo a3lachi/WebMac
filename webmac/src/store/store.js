@@ -127,13 +127,13 @@ export default {
         }
         if ( state.resize.status === true ) {
           console.log('moving on border')
-          const deltaX = ev.clientX - state.x;
-          const deltaY = ev.clientY - state.y;
+          const deltaX = ev.clientX - state.mouse.x;
+          const deltaY = ev.clientY - state.mouse.y;
           console.log(deltaX)
-          state.win[elem].width = Math.max(
-            state.minWidth,
-            Math.min(state.maxWidth, state.resize.evw + deltaX)
-          );
+          // state.win[elem].width = Math.max(
+          //   state.minWidth,
+          //   Math.min(state.maxWidth, state.resize.evw + deltaX)
+          // );
           
         }
       },
@@ -141,7 +141,8 @@ export default {
         const ev = payload[0]
         const elem = payload[1]
         
-        state.drag.status = false        
+        state.drag.status = false  
+        state.resize.status = false        
       },
       
 
