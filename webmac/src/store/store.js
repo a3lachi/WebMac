@@ -73,7 +73,7 @@ export default {
           x > rect.width - state.bordersize ||
           y > rect.height - state.bordersize
         ){
-          console.log('on border')
+          console.log('on border',elemm)
         }
         else {
           state.drag.view.pop()
@@ -82,9 +82,8 @@ export default {
           state.drag.status = true
 
 
-          const elemer = document.getElementById('win'+elem)
-          elemer.remove()
-          document.getElementById('windows').append(elemer)
+          elemm.remove()
+          document.getElementById('windows').append(elemm)
 
           
           state.drag.x = ev.clientX
