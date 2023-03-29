@@ -30,6 +30,7 @@ export default {
       },
       drag:{
         view:[],
+        status:false,
         x:0,
         y:0,
         evx:0,
@@ -115,6 +116,8 @@ export default {
         console.log('Mouse down on',elem)
         state.drag.view.pop()
         state.drag.view.push(elem)
+
+        this.state.drag.status = true
 
 
         const elemer = document.getElementById('win'+elem)

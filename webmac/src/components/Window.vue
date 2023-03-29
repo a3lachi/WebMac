@@ -37,7 +37,7 @@ export default {
       @dragstart="startDrag([$event,data.text])" @dragover="dragOver([$event,data.text])" 
       @drop="dragDrop([$event,data.text])"
       @click="mainViewWindow(data.text)"    
-      @mousedown="mouseDown([$event,data.text])"  @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseMove([$event,data.text])"    
+      @mousedown="mouseDown([$event,data.text])"  @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])"    
       id="wion"
       :style = "{ left:`${data.left}px` , top:`${data.top}px` , width:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
 
