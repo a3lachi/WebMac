@@ -117,7 +117,7 @@ export default {
         state.drag.view.pop()
         state.drag.view.push(elem)
 
-        this.state.drag.status = true
+        state.drag.status = true
 
 
         const elemer = document.getElementById('win'+elem)
@@ -129,9 +129,27 @@ export default {
         state.drag.y = ev.clientY
       },
       mousemove(state,payload){
-        const ev = payload[0]
-        const elem = payload[1]
-        console.log('Mouse move on',elem)
+        if(state.drag.status === true) {
+
+          const ev = payload[0]
+          const elem = payload[1]
+          console.log('Mouse move on',elem)
+          state.drag.evx = ev.clientX
+          state.drag.evy = ev.clientY
+
+          state.win[elem].top +=  state.drag.evy - state.drag.y
+          state.win[elem].left +=  state.drag.evx - state.drag.x
+          state.drag.x = ev.clientX
+          state.drag.y = ev.clientY
+          
+
+          if (state.win[elem].top<0) 
+            state.win[elem].top  = 0
+
+          ev.preventDefault()
+
+        }
+        
         
       },
       mouseup(state,payload){
