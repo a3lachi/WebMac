@@ -125,9 +125,9 @@ export default {
           console.log('moving on border')
           const deltaX = ev.clientX - this.startX;
           const deltaY = ev.clientY - this.startY;
-          this.width = Math.max(
+          state.win[elem].width = Math.max(
             this.minWidth,
-            Math.min(this.maxWidth, this.startWidth + deltaX)
+            Math.min(this.maxWidth, this.resize.evw + deltaX)
           );
           
         }
