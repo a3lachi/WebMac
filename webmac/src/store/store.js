@@ -88,6 +88,8 @@ export default {
           
           state.drag.x = ev.clientX
           state.drag.y = ev.clientY
+          document.addEventListener('mousemove', this.mouseMove);
+          document.addEventListener('mouseup', this.mouseUp);
         }
       },
       mousemove(state,payload){
