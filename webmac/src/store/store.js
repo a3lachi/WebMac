@@ -65,9 +65,9 @@ export default {
         const elem = payload[1]
         const elemm = document.getElementById('win'+elem)
         const rect = elemm.getBoundingClientRect();
-        const x = ev.clientX - state.win[elem].top;
-        const y = ev.clientY - state.win[elem].left;
-        console.log('hdatyat',x,y)
+        const x = ev.clientX - state.win[elem].left;
+        const y = ev.clientY - state.win[elem].top;
+        console.log('hdatyat',typeof x,typeof this.borderSize,y)
         if(
           x < this.borderSize ||
           y < this.borderSize ||
