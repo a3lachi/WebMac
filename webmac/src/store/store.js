@@ -113,27 +113,29 @@ export default {
         const ev = payload[0]
         const elem = payload[1]
         console.log('Mouse down on',elem)
+        state.drag.view.pop()
+        state.drag.view.push(elem)
+
+
         const elemer = document.getElementById('win'+elem)
         elemer.remove()
         document.getElementById('windows').append(elemer)
+
+        
         state.drag.x = ev.clientX
         state.drag.y = ev.clientY
       },
       mousemove(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('Mouse down on',elem)
+        console.log('Mouse move on',elem)
         
       },
       mouseup(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        console.log('Mouse down on',elem)
-        const elemer = document.getElementById('win'+elem)
-        elemer.remove()
-        document.getElementById('windows').append(elemer)
-        state.drag.x = ev.clientX
-        state.drag.y = ev.clientY
+        console.log('Mouse up on',elem)
+        
       },
 
 
