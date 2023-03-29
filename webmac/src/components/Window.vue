@@ -34,8 +34,6 @@ export default {
 
 <template>
     <div  v-if="data.show === true"    :ref="data.text" 
-      @dragstart="startDrag([$event,data.text])" @dragover="dragOver([$event,data.text])" 
-      @drop="dragDrop([$event,data.text])"
       @click="mainViewWindow(data.text)"    
       @mousedown="mouseDown([$event,data.text])"  @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])"    
       id="wion"

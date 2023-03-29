@@ -155,6 +155,8 @@ export default {
       mouseup(state,payload){
         const ev = payload[0]
         const elem = payload[1]
+        
+        state.drag.status = false
         console.log('Mouse up on',elem)
         
       },
