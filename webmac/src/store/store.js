@@ -96,7 +96,6 @@ export default {
           document.getElementById('windows').append(elemm)
 
           const draggable = elemm.children[0]
-          console.log(draggable)
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
         }
