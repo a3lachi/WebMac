@@ -1,4 +1,4 @@
-import { resizeTop , bordersCondition , MouseCursor } from './resize.js'
+import { resizeTop , bordersCondition , MouseCursor , HandleResize } from './resize.js'
 
 
 
@@ -19,10 +19,8 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   )
 }
 
-const HandleResize = (event,state) => { 
-  state.mouse.x = event.clientX
-  state.mouse.y = event.clientY
-} 
+
+
 
 
 export default {
@@ -34,7 +32,7 @@ export default {
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
         APIs:WinInfo('APIs',false,25,20,700,500,0,0),
         Projects:WinInfo('Projects',false,25,20,700,500,0,0),
-        Muzik:WinInfo('Muzik',false,25,20,150,500,0,0),
+        Muzik:WinInfo('Muzik',false,205,20,250,500,0,0),
       },
       minWidth: 50,
       minHeight: 50,
@@ -55,8 +53,10 @@ export default {
         direction:"",
         evw:0,
         evh:0,
-        x:0,
-        y:0,
+        mouse: {
+          x:0,
+          y:0,
+        },
       },
     },
 
@@ -64,9 +64,6 @@ export default {
 
 
     mutations: {
-      close(state,payload) {
-        state.win[payload].show = false ;
-      },
       open(state,payload) {
         state.win[payload].show = true ;
         let max = 1
@@ -82,35 +79,45 @@ export default {
 
 
       mousedown(state,payload){
-        const ev = payload[0]
+        const ev = payload[0]        
         const elem = payload[1]
+
+        //  CLOSE WINDOW
+        if (ev.target.id === '99') {
+          state.win[elem].show = false ;
+          return 0 
+        }
+
+
         const elemm = document.getElementById('win'+elem)
+
         const height = elemm.childNodes[0].style.height.split('px')[0]
+
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
+
+
         elemm.remove()
         document.getElementById('windows').append(elemm)
+
+
         const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height,false)
         
         if(border != false ) {
           elemm.addEventListener('move', (event,state) => HandleResize(event,state) )
           state.resize.direction = border
           state.resize.status = true
-          
-
-          // var myDiv = document.getElementById("myDiv");
-          // myDiv.style.removeProperty("background-color");
-
-          state.resize.direction = border
-
           state.resize.evw = state.win[elem].width
           state.resize.evh = state.win[elem].height
+          state.mouse.x = ev.clientX
+          state.mouse.y = ev.clientY
         }
         else {
           state.drag.view.pop()
           state.drag.view.push(elem)
 
           state.drag.status = true
+
           
 
           state.mouse.x = ev.clientX
@@ -126,15 +133,18 @@ export default {
         
         const ev = payload[0]
         const elem = payload[1]
-        const elemm = document.getElementById('win'+elem)
-        const height = elemm.childNodes[0].style.height.split('px')[0]
+        const elemFather = document.getElementById('win'+elem)
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
 
+        
+
+        const height = elemFather.childNodes[0].style.height.split('px')[0]
         // change cursor around resizing place
-        const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height,true)
+        const border = bordersCondition(elemFather.childNodes[0],x,y,state.win[elem].width, height  ,true)
         state.win[elem].cursor = MouseCursor(border)
 
+        if( border != false ) state.drag.status = false
 
 
         
@@ -164,25 +174,14 @@ export default {
 
         else if ( state.resize.status === true ) {
           
-          console.log('Button clicked!');
           console.log('moving on border')
-          const deltaX = event.clientX - state.mouse.x;
-          const deltaY = event.clientY - state.mouse.y;
+          const deltaX = state.resize.mouse.x - state.mouse.x;
+          const deltaY = state.resize.mouse.y - state.mouse.y;
           console.log('----->h',border,deltaY)
           if (border === 'top') resizeTop(elemm.childNodes[0],deltaY,Number(height))
-          if (border === 'lef') resizeTop(elemm,deltaX)
-          if (border === 'rig') resizeTop(elemm,deltaX)
-          if (border === 'bot') resizeTop(elemm,deltaY)
-          state.mouse.x = event.clientX
-          state.mouse.y = event.clientY
-          event.preventDefault()
-          
-
-
-
-
-          
-          
+          state.mouse.x = state.resize.mouse.x
+          state.mouse.y = state.resize.mouse.y
+          ev.preventDefault()
         }
       },
 
@@ -226,10 +225,6 @@ export default {
 
 
     actions: {
-      closeWindow(context,payload) {
-        context.commit('close',payload)
-      },
-
       openWindow(context,payload) {
         context.commit('open',payload)
       },

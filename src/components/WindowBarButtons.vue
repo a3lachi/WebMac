@@ -16,9 +16,9 @@ export default {
 
 <template>
 <div   class="bts">
-    <div  @click="closeWindow(data)"  class="btn">
+    <div  class="btn">
         <div class="insdbtn">
-            <div>o</div>
+            <div id="99">o</div>
         </div>
         
     </div>
