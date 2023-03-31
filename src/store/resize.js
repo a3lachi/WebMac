@@ -6,8 +6,9 @@ export const bordersCondition = (elem,x,y,width,height) => {
   
   if (bol==='top') {
     elem.style.bottom = elem.style.top.split('px')[0] + height + 'px'
-    elem.style.removeProperty("top");
     elem.style.position = 'fixed'
+    elem.style.removeProperty("top");
+    
 
   }
   return {bol:bol}
