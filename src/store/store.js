@@ -151,7 +151,7 @@ export default {
           const deltaX = ev.clientX - state.mouse.x;
           const deltaY = ev.clientY - state.mouse.y;
 
-          if (border === 'top') resizeTop(elemm,deltaY)
+          if (border === 'top') resizeTop(elemm.childNodes[0],deltaY)
           if (border === 'lef') resizeTop(elemm,deltaX)
           if (border === 'rig') resizeTop(elemm,deltaX)
           if (border === 'bot') resizeTop(elemm,deltaY)
