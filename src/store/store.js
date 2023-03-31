@@ -167,6 +167,8 @@ export default {
           if (border === 'lef') resizeTop(elemm,deltaX)
           if (border === 'rig') resizeTop(elemm,deltaX)
           if (border === 'bot') resizeTop(elemm,deltaY)
+          state.mouse.x = ev.clientX
+          state.mouse.y = ev.clientY
           
         }
       },
