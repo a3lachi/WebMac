@@ -90,8 +90,8 @@ export default {
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        const elemm = document.getElementById('win'+elem).childNodes[0]
-        const height = elemm.style.height.split('px')[0]
+        const elemm = document.getElementById('win'+elem)
+        const height = elemm.childNodes[0].style.height.split('px')[0]
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
         
