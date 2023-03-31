@@ -1,4 +1,4 @@
-import resizeTop from './resize'
+import {resizeTop} from './resize.js'
 
 const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   return (
