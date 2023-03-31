@@ -11,5 +11,7 @@ export const resizeTop = (elem,delta,height) => {
   const top = elem.style.top.split('px')[0]
   elem.style.bottom = top + height
   elem.style.removeProperty("top");
+  elem.style.position = 'fixed' ;
+  const 
   elem.style.height += delta
 }
