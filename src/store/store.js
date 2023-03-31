@@ -162,14 +162,10 @@ export default {
           const deltaX = ev.clientX - state.mouse.x;
           const deltaY = ev.clientY - state.mouse.y;
 
-          state.win[elem].width = Math.max(
-            state.minWidth,
-            Math.min(state.maxWidth, state.resize.evw + deltaX)
-          );
-          state.win[elem].height = Math.max(
-            state.minHeight,
-            Math.min(state.maxHeight, state.resize.evh + deltaY)
-          );
+          if (border === 'top') resizeTop(elemm,deltaX)
+          if (border === 'lef') resizeTop(elemm)
+          if (border === 'rig') resizeTop(elemm)
+          if (border === 'bot') resizeTop(elemm)
           
         }
       },
