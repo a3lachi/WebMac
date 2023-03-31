@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="container col">
+  <div id="webmak" class="container col">
     <HomeView />
     <IconView :data="item" />
     <WindowView :data="item"  />
@@ -61,11 +61,13 @@ export default {
 
 <style>
 
-div {
+#webmak {
   max-height: 100%;
   transition: none;
   transition-property: none; 
+  display: none;
 }
+
 
 
 </style>
