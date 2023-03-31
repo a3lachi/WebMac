@@ -127,10 +127,10 @@ export default {
         
         const ev = payload[0]
         const elem = payload[1]
-        const elemm = document.getElementById('win'+elem).childNodes[0]
+        const elemm = document.getElementById('win'+elem)
+        const height = elemm.childNodes[0].style.height.split('px')[0]
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
-        const height = elemm.style.height.split('px')[0]
 
         // change cursor around resizing place
         const border = bordersCondition(x,y,state.win[elem].width,height).bol
