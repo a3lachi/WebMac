@@ -22,9 +22,6 @@ export default {
 				"cursor":"default",
 				"width":`${this.data.width}px`,
 				// "height":`${this.data.height-20}px`,
-				":active":{
-					"cursor":"none"
-				}
 			};
 		}
   },

@@ -37,7 +37,7 @@ export default {
        
       @mousedown="mouseDown([$event,data.text])"   @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])" 
       id="wion"
-      :style = "{ left:`${data.left}px` , top:`${data.top}px` , width:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
+      :style = "{ cursor:`${data.cursor}` , left:`${data.left}px` , right:'700px' , top:`${data.top}px` , minWidth:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
 
         <WindowBar :data="data" />
         <WindowDialog :data="data" />

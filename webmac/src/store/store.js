@@ -1,6 +1,6 @@
 
 
-const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
+const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   return (
     {
       text:text,
@@ -10,7 +10,8 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY) => {
       width:w,
       height:h,
       gap:gp,
-      paddingY:paddingY
+      paddingY:paddingY,
+      cursor:cursor,
     }
   )
 }
@@ -23,7 +24,7 @@ export default {
     state: {
       bordersize:9,
       win:{
-        About:WinInfo('About',false,250,300,500,300,10,20),
+        About:WinInfo('About',false,250,300,500,300,10,20,'cell'),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
         APIs:WinInfo('APIs',false,25,20,700,500,0,0),
         Projects:WinInfo('Projects',false,25,20,700,500,0,0),
@@ -111,6 +112,20 @@ export default {
       mousemove(state,payload){
         const ev = payload[0]
         const elem = payload[1]
+        const elemm = document.getElementById('win'+elem)
+        const rect = elemm.getBoundingClientRect();
+        const x = ev.clientX - state.win[elem].left;
+        const y = ev.clientY - state.win[elem].top;
+        if(
+          x < state.bordersize ||
+          y < state.bordersize ||
+          x > rect.width - state.bordersize ||
+          y > rect.height - state.bordersize
+        )
+        {
+          state.win[elem].cursor = 'cell'
+          console.log('brrr')
+        }
         if(state.drag.status === true) {
 
           
