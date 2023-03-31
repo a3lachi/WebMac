@@ -99,8 +99,6 @@ export default {
           state.drag.view.push(elem)
 
           state.drag.status = true
-
-
           elemm.remove()
           document.getElementById('windows').append(elemm)
 
@@ -108,6 +106,11 @@ export default {
           state.mouse.y = ev.clientY
         }
       },
+
+
+
+
+
       mousemove(state,payload){
         
         const ev = payload[0]
@@ -157,6 +160,12 @@ export default {
           
         }
       },
+
+
+
+
+
+
       mouseup(state,payload){
         const ev = payload[0]
         const elem = payload[1]
@@ -164,9 +173,6 @@ export default {
         state.drag.status = false  
         state.resize.status = false        
       },
-      
-
-
     },
 
 
