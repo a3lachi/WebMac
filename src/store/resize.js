@@ -7,11 +7,6 @@ export const bordersCondition = (x,y,width,height) => {
 }
 
 export const resizeTop = (elem,delta,height) => {
-  
-  const top = elem.style.top.split('px')[0]
-  elem.style.bottom = top + height
-  elem.style.removeProperty("top");
-  elem.style.position = 'fixed' ;
   elem.style.height = delta + height + 'px'
-  console.log(top,'---',height)
+
 }
