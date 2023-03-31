@@ -1,62 +1,21 @@
 <script>
-import HomeView from './views/HomeView.vue' 
-import IconView from './views/IconView.vue'
-import WindowView from './views/WindowView.vue';
-const WinInfo = (win,show,left,top,w,h) => {
-  return (
-    {
-      win:win,
-      show:show,
-      left:left,
-      top:top,
-      width:w,
-      height:h,
-    }
-  )
-}
-import { mapGetters } from 'vuex'
+import WebMac from './pages/WebMac.vue';
 
 export default {
-  data(){
-    return{
-      About:WinInfo("About",true,25,30,500,300),
-      Resumer:WinInfo("Resume",false,25,30,500,300)
-    }
-  },
-  methods:{
-  },
-  computed: {
-    ...mapGetters(['getWins']),
-    item() {
-      return this.getWins
-    }
-  },
 
   components:{
-    HomeView,
-    WindowView,
-    IconView,
-    },
+    WebMac,
+  },
 }
-
 
 </script>
 
 <template>
-  <div class="container col">
-    <HomeView />
-    <IconView :data="item" />
-    <WindowView :data="item"  />
-    
-  </div>
+
+  <WebMac />
 
 </template>
 
 <style>
-div {
-  max-height: 100%;
-  transition: none;
-  transition-property: none; 
-}
 
 </style>

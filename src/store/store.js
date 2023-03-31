@@ -1,4 +1,7 @@
-import {resizeTop , bordersCondition} from './resize.js'
+import { resizeTop , bordersCondition , MouseCursor } from './resize.js'
+
+
+
 
 const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   return (
@@ -15,6 +18,11 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
     }
   )
 }
+
+const HandleResize = (event,state) => { 
+  state.mouse.x = event.clientX
+  state.mouse.y = event.clientY
+} 
 
 
 export default {
@@ -44,6 +52,7 @@ export default {
       },
       resize:{
         status:false,
+        direction:"",
         evw:0,
         evh:0,
         x:0,
@@ -79,17 +88,20 @@ export default {
         const height = elemm.childNodes[0].style.height.split('px')[0]
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
+        elemm.remove()
+        document.getElementById('windows').append(elemm)
+        const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height,false)
         
-        const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height).bol
-        if(border) {
+        if(border != false ) {
+          elemm.addEventListener('move', (event,state) => HandleResize(event,state) )
+          state.resize.direction = border
           state.resize.status = true
-          state.mouse.x = ev.clientX
-          state.mouse.y = ev.clientY
-
-          console.log('-----> ',border.bol)
+          
 
           // var myDiv = document.getElementById("myDiv");
           // myDiv.style.removeProperty("background-color");
+
+          state.resize.direction = border
 
           state.resize.evw = state.win[elem].width
           state.resize.evh = state.win[elem].height
@@ -99,8 +111,7 @@ export default {
           state.drag.view.push(elem)
 
           state.drag.status = true
-          elemm.remove()
-          document.getElementById('windows').append(elemm)
+          
 
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
@@ -121,12 +132,17 @@ export default {
         const y = ev.clientY - state.win[elem].top;
 
         // change cursor around resizing place
-        const border = bordersCondition(x,y,state.win[elem].width,height).bol
+        const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height,true)
+        state.win[elem].cursor = MouseCursor(border)
 
-        state.win[elem].cursor = border ? 'cell' : 'default'
+
+
+        
 
         
         if(state.drag.status === true) {
+
+          console.log('dragging')
 
           
           state.drag.evx = ev.clientX
@@ -147,16 +163,25 @@ export default {
 
 
         else if ( state.resize.status === true ) {
+          
+          console.log('Button clicked!');
           console.log('moving on border')
-          const deltaX = ev.clientX - state.mouse.x;
-          const deltaY = ev.clientY - state.mouse.y;
-
-          if (border === 'top') resizeTop(elemm.childNodes[0],deltaY,height)
+          const deltaX = event.clientX - state.mouse.x;
+          const deltaY = event.clientY - state.mouse.y;
+          console.log('----->h',border,deltaY)
+          if (border === 'top') resizeTop(elemm.childNodes[0],deltaY,Number(height))
           if (border === 'lef') resizeTop(elemm,deltaX)
           if (border === 'rig') resizeTop(elemm,deltaX)
           if (border === 'bot') resizeTop(elemm,deltaY)
-          state.mouse.x = ev.clientX
-          state.mouse.y = ev.clientY
+          state.mouse.x = event.clientX
+          state.mouse.y = event.clientY
+          event.preventDefault()
+          
+
+
+
+
+          
           
         }
       },
@@ -168,10 +193,33 @@ export default {
 
       mouseup(state,payload){
         const ev = payload[0]
-        const elem = payload[1]
+        const elemm = payload[1]
+
+        console.log('MOUSE UP ------------------------- ')
+
+        const elemFather = document.getElementById('win'+elemm)
+        const elem = elemFather.childNodes[0]
+
+        if (state.resize.direction === 'top') {
+          var docHeight = document.documentElement.clientHeight;
+          elem.style.top = ( Number(docHeight) - Number(elem.style.bottom.split('px')[0]) - Number(elem.style.height.split('px')[0])) + 'px'
+          elem.style.position = 'fixed'
+          elem.style.removeProperty("bottom");
+          try {
+            elemFather.removeEventListener("move");
+          } catch (err) {
+            console.log('')
+          }
+        }
         
+
+        // CLEANING
         state.drag.status = false  
-        state.resize.status = false        
+        state.resize.status = false 
+        state.resize.direction = ""     
+        state.win[elemm].cursor = "default"   
+        
+
       },
     },
 
