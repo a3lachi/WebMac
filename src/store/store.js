@@ -133,19 +133,8 @@ export default {
 
         // change cursor around resizing place
         const border = bordersCondition(x,y,state.win[elem].width,height).bol
-        if(border) {
-          console.log('----> ',border)
-          state.win[elem].cursor = 'cell'
-
-          if (border === 'top') resizeTop(elemm)
-          if (border === 'lef') resizeTop(elemm)
-          if (border === 'rig') resizeTop(elemm)
-          if (border === 'bot') resizeTop(elemm)
-        }
-        else {
-          state.win[elem].cursor = 'default'
-        }
-
+        
+        state.win[elem].cursor = border ? 'cell' : 'default'
 
         
         if(state.drag.status === true) {
