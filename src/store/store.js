@@ -27,6 +27,7 @@ export default {
 
 
     state: {
+      showStart: true,
       win:{
         About:WinInfo('About',false,250,300,500,300,10,20,'default'),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
@@ -74,6 +75,14 @@ export default {
         const elem = document.getElementById('win'+payload)
         elem.remove()
         document.getElementById('windows').append(elem)
+      },
+
+      login(state,payload) {
+        if(payload.clientX-document.body.clientWidth/2>=55 && payload.target?.value?.length>4) {
+          state.showStart = false
+          const WebMacView = document.getElementById('webmak')
+          WebMacView.style.display = 'block'
+        }
       },
 
 
@@ -237,6 +246,9 @@ export default {
       mouseUp(context,payload) {
         context.commit('mouseup',payload)
       },
+      Login(context,payload) {
+        context.commit('login',payload)
+      },
       
     },
 
@@ -247,6 +259,9 @@ export default {
     getters: {
       getWins(state) {
         return state.win
-      }
+      },
+      getStart(state) {
+        return state.showStart
+      },
     }
   }

@@ -1,6 +1,8 @@
 <script>
 import WebMac from './pages/WebMac.vue';
 import Start from './pages/Start.vue';
+import { mapGetters } from 'vuex'
+
 
 export default {
   data() {
@@ -8,12 +10,11 @@ export default {
       showComponentOne: true,
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.showComponentOne = false
-      const WebMacView = document.getElementById('webmak')
-      WebMacView.style.display = 'block'
-    }, 2000)
+  computed: {
+    ...mapGetters(['getStart']),
+    start() {
+      return this.getStart
+    }
   },
   components:{
     WebMac,
@@ -24,14 +25,9 @@ export default {
 </script>
 
 <template>
-
-
-    
-    
     
     <WebMac  />
-    <Start v-if="showComponentOne"  />
-
+    <Start v-if="start" />
 
 </template>
 
