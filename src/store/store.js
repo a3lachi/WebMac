@@ -1,4 +1,4 @@
-import {resizeTop , bordersCondition , borderSize } from './resize.js'
+import {resizeTop , bordersCondition} from './resize.js'
 
 const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   return (
@@ -15,10 +15,6 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
     }
   )
 }
-
-
-
-
 
 
 export default {

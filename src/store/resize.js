@@ -1,5 +1,5 @@
 
-export const borderSize = 6 ;
+const borderSize = 6 ;
 
 export const resizeTop = (elem,delta) => {
   elem.style.bottom = elem.style.top + elem.style.height
