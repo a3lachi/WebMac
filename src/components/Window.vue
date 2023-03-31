@@ -3,7 +3,6 @@
 import WindowBar from './WindowBar.vue'
 import WindowDialog from './WindowDialog.vue';
 import { mapActions } from 'vuex'
-import { throttle } from 'lodash';
 
 export default {
     props:{
@@ -11,6 +10,13 @@ export default {
     },
     methods:{
     ...mapActions(['startDrag','dragOver', 'dragDrop','mainViewWindow','mouseDown','mouseMove','mouseUp']),
+    eHandler() {
+      this.width = data.width;
+      this.height = data.height;
+      this.left = data.left;
+      this.top = data.top;
+      this.event = data.eventName;
+    }
     
     
     },
@@ -20,12 +26,7 @@ export default {
         WindowBar,
         WindowDialog,
     },
-    created(){
-      this.throttledHandleInput = throttle((event, input) => {
-        this.dragOver(event, input);
-        // event.preventDefault()
-      }, 1);
-    }
+
 
 }
 </script>
@@ -33,16 +34,17 @@ export default {
 <!-- draggable="true" -->
 
 <template>
-    <div  v-if="data.show === true"    :ref="data.text" 
+  
+    <div  v-if="data.show === true"    :ref="data.text"   class="resizable-content"
        
       @mousedown="mouseDown([$event,data.text])"   @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])" 
       id="wion"
-      :style = "{ cursor:`${data.cursor}` , left:`${data.left}px` , right:'700px' , top:`${data.top}px` , minWidth:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
+      :style = "{ cursor:`${data.cursor}` , left:`${data.left}px`  , top:`${data.top}px` , minWidth:`${data.width}px` , width:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
 
         <WindowBar :data="data" />
         <WindowDialog :data="data" />
 
-    </div>  
+    </div> 
 
 </template>
 

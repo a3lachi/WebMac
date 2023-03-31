@@ -19,7 +19,7 @@ export default {
 				"padding-top":"20px",
 				"padding-bottom":"20px",
 				"opacity": 1,
-				"cursor":"default",
+				"cursor":`${this.data.cursor}`,
 				"width":`${this.data.width}px`,
 				// "height":`${this.data.height-20}px`,
 			};

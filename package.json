@@ -10,6 +10,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "vue": "^3.2.47",
+    "vue-resizable": "^2.1.7",
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   },

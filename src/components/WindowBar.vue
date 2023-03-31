@@ -16,11 +16,17 @@ export default {
                 "text-align":"center",
                 "right":0,
                 "width":`${this.data.width-70}px`,
+                
                 "color":'rgb(184,183,180)',
                 "font-size":"14px",
                 "line-height": "20px",
             };
-        }
+        },
+        windowBarStyle() {
+            return {
+                "cursor":`${this.data.cursor}`,
+            }
+        },
     },
     components:{
         WindowBarButtons,
@@ -32,7 +38,7 @@ export default {
 
 <template>
 
-<div   class="windowbar">
+<div   class="windowbar" :style="windowBarStyle">
 
     <WindowBarButtons :data="data.text" />
     <div :style="barStyles" >

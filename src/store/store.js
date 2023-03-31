@@ -16,15 +16,22 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   )
 }
 
+const borderSize = 6
+
+
+const bordersCondition = (x,y,width,height) => {
+  const bol =  x-1 < borderSize ? "lef" :  y-1 < borderSize ? "top" :  x-1 > width - borderSize ? "rig" :  y-1 > height - borderSize ? "bot" : false 
+  return {bol:bol}
+}
+
 
 
 export default {
 
 
     state: {
-      bordersize:9,
       win:{
-        About:WinInfo('About',false,250,300,500,300,10,20,'cell'),
+        About:WinInfo('About',false,250,300,500,300,10,20,'default'),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
         APIs:WinInfo('APIs',false,25,20,700,500,0,0),
         Projects:WinInfo('Projects',false,25,20,700,500,0,0),
@@ -77,20 +84,21 @@ export default {
       mousedown(state,payload){
         const ev = payload[0]
         const elem = payload[1]
-        const elemm = document.getElementById('win'+elem)
-        const rect = elemm.getBoundingClientRect();
+        const elemm = document.getElementById('win'+elem).childNodes[0]
+        const height = elemm.style.height.split('px')[0]
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
-        if(
-          x < state.bordersize ||
-          y < state.bordersize ||
-          x > rect.width - state.bordersize ||
-          y > rect.height - state.bordersize
-        ){
-          console.log('on border')
+        
+        const border = bordersCondition(x,y,state.win[elem].width,height).bol
+        if(border) {
           state.resize.status = true
           state.mouse.x = ev.clientX
           state.mouse.y = ev.clientY
+
+          console.log('-----> ',border.bol)
+
+          // var myDiv = document.getElementById("myDiv");
+          // myDiv.style.removeProperty("background-color");
 
           state.resize.evw = state.win[elem].width
           state.resize.evh = state.win[elem].height
@@ -110,22 +118,31 @@ export default {
         }
       },
       mousemove(state,payload){
+        
         const ev = payload[0]
         const elem = payload[1]
-        const elemm = document.getElementById('win'+elem)
-        const rect = elemm.getBoundingClientRect();
+        const elemm = document.getElementById('win'+elem).childNodes[0]
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
-        if(
-          x < state.bordersize ||
-          y < state.bordersize ||
-          x > rect.width - state.bordersize ||
-          y > rect.height - state.bordersize
-        )
-        {
+        const height = elemm.style.height.split('px')[0]
+
+        // change cursor around resizing place
+        const border = bordersCondition(x,y,state.win[elem].width,height).bol
+        if(border) {
+          console.log('----> ',border)
           state.win[elem].cursor = 'cell'
-          console.log('brrr')
+
+          if (border === 'top') resizeTop(elemm)
+          if (border === 'lef') resizeTop(elemm)
+          if (border === 'rig') resizeTop(elemm)
+          if (border === 'bot') resizeTop(elemm)
         }
+        else {
+          state.win[elem].cursor = 'default'
+        }
+
+
+        
         if(state.drag.status === true) {
 
           
@@ -144,21 +161,23 @@ export default {
           ev.preventDefault()
 
         }
-        if ( state.resize.status === true ) {
-          console.log('moving on border')
-          const deltaX = ev.clientX - state.mouse.x;
-          const deltaY = ev.clientY - state.mouse.y;
 
-          state.win[elem].width = Math.max(
-            state.minWidth,
-            Math.min(state.maxWidth, state.resize.evw + deltaX)
-          );
-          state.win[elem].height = Math.max(
-            state.minHeight,
-            Math.min(state.maxHeight, state.resize.evh + deltaY)
-          );
+
+        // else if ( state.resize.status === true ) {
+        //   console.log('moving on border')
+        //   const deltaX = ev.clientX - state.mouse.x;
+        //   const deltaY = ev.clientY - state.mouse.y;
+
+        //   state.win[elem].width = Math.max(
+        //     state.minWidth,
+        //     Math.min(state.maxWidth, state.resize.evw + deltaX)
+        //   );
+        //   state.win[elem].height = Math.max(
+        //     state.minHeight,
+        //     Math.min(state.maxHeight, state.resize.evh + deltaY)
+        //   );
           
-        }
+        // }
       },
       mouseup(state,payload){
         const ev = payload[0]
