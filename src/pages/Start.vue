@@ -23,7 +23,7 @@ export default {
 <template>
 <div id="strt">
   <div id="profileImg">
-    <img id="profile" src="prflimg.png" />
+    <img id="profile" src="/prflimg.png" />
   </div>
 
   <div id="usrnm">
@@ -52,7 +52,7 @@ export default {
   align-items: center;
   flex-direction: column;
   gap:10px;
-  background-image: url('start.jpeg');
+  background-image: url('/start.jpeg');
   color:#e2e8f0 ;
 }
 
@@ -85,7 +85,7 @@ input, select, textarea{
 }
 
 #pwdd {
-  background: url('login.svg') no-repeat right ;
+  background: url('/login.svg') no-repeat right ;
   cursor: default;
   height:20px;
   width: 140px;
