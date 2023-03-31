@@ -80,7 +80,7 @@ export default {
         const x = ev.clientX - state.win[elem].left;
         const y = ev.clientY - state.win[elem].top;
         
-        const border = bordersCondition(x,y,state.win[elem].width,height).bol
+        const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height).bol
         if(border) {
           state.resize.status = true
           state.mouse.x = ev.clientX
