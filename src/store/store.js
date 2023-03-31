@@ -26,8 +26,8 @@ const bordersCondition = (x,y,width,height) => {
 
 
 const resizeTop = (elem) => {
+  elem.style.bottom = elem.style.top + elem.style.height
   elem.style.removeProperty("top");
-  elem.style.bottom = ""
 }
 
 
