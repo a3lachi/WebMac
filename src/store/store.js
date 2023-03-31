@@ -25,6 +25,10 @@ const bordersCondition = (x,y,width,height) => {
 }
 
 
+const resizeTop = (elem) => {
+  
+}
+
 
 export default {
 
