@@ -1,4 +1,4 @@
-import {resizeTop} from './resize.js'
+import {resizeTop , bordersCondition , borderSize } from './resize.js'
 
 const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   return (
@@ -16,13 +16,8 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
   )
 }
 
-const borderSize = 6
 
 
-const bordersCondition = (x,y,width,height) => {
-  const bol =  x-1 < borderSize ? "lef" :  y-1 < borderSize ? "top" :  x-1 > width - borderSize ? "rig" :  y-1 > height - borderSize ? "bot" : false 
-  return {bol:bol}
-}
 
 
 
