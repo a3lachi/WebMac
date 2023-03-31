@@ -133,7 +133,7 @@ export default {
 
         // change cursor around resizing place
         const border = bordersCondition(x,y,state.win[elem].width,height).bol
-        
+
         state.win[elem].cursor = border ? 'cell' : 'default'
 
         
@@ -157,21 +157,21 @@ export default {
         }
 
 
-        // else if ( state.resize.status === true ) {
-        //   console.log('moving on border')
-        //   const deltaX = ev.clientX - state.mouse.x;
-        //   const deltaY = ev.clientY - state.mouse.y;
+        else if ( state.resize.status === true ) {
+          console.log('moving on border')
+          const deltaX = ev.clientX - state.mouse.x;
+          const deltaY = ev.clientY - state.mouse.y;
 
-        //   state.win[elem].width = Math.max(
-        //     state.minWidth,
-        //     Math.min(state.maxWidth, state.resize.evw + deltaX)
-        //   );
-        //   state.win[elem].height = Math.max(
-        //     state.minHeight,
-        //     Math.min(state.maxHeight, state.resize.evh + deltaY)
-        //   );
+          state.win[elem].width = Math.max(
+            state.minWidth,
+            Math.min(state.maxWidth, state.resize.evw + deltaX)
+          );
+          state.win[elem].height = Math.max(
+            state.minHeight,
+            Math.min(state.maxHeight, state.resize.evh + deltaY)
+          );
           
-        // }
+        }
       },
       mouseup(state,payload){
         const ev = payload[0]
