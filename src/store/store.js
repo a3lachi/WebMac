@@ -20,7 +20,7 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
 }
 
 
-
+const pwd = "💕💕💕"
 
 
 export default {
@@ -29,6 +29,7 @@ export default {
     state: {
       showStart: true,
       showMsg : false ,
+      Msg:"Your Password "+pwd,
       win:{
         About:WinInfo('About',false,250,300,500,300,10,20,'default'),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
@@ -79,8 +80,9 @@ export default {
       },
 
       login(state,payload) {
+        console.log(state.Msg)
         if(payload.clientX-document.body.clientWidth/2>=55 || payload.keyCode === 13 ) {
-          if (payload.target?.value === "brr") {
+          if (payload.target?.value === pwd) {
             state.showStart = false
             const WebMacView = document.getElementById('webmak')
             WebMacView.style.display = 'block'
@@ -273,6 +275,9 @@ export default {
       },
       getStartMsg(state) {
         return state.showMsg
+      },
+      getMsg(state) {
+        return state.Msg
       },
     }
   }

@@ -5,12 +5,11 @@ import { mapActions , mapGetters } from 'vuex'
 
 
 
-
 // const profilImg = localStorage.getItem('profil');
 export default {
   data(){
     return {
-      message: "Password is YOURCOMPANYNAME",
+      message: this.getMsg() ,
       userName:{
         '1':'A3lachi',
         '2':'Farawa',
@@ -26,7 +25,7 @@ export default {
   
   methods:{
     ...mapActions(['Login']),
-    ...mapGetters(['getStartMsg']),
+    ...mapGetters(['getStartMsg' , 'getMsg']),
     getShowMsg() {
       return this.getStartMsg
     },
@@ -43,6 +42,13 @@ export default {
     },
     submit() {
       return false ;
+    },
+    Blur() {
+      console.log('blur')
+      this.message = ""
+    },
+    Focus() {
+      this.message = this.getMsg()
     },
   },
   mounted() {
@@ -66,15 +72,12 @@ export default {
     {{ userName[this.pImg] }}
   </div>
 
-  <!-- <div id="pwd" >
-    <input id="pwdd" type="password" required @click="Login($event)">
-  </div> -->
   <div  id="pwd">
-    <input id="pwwd" @keydown="Login($event)"  type="password" size="40" required placeholder="Enter Password" @click="Login($event)" />
+    <input id="pwwd" @blur="Blur" @focus="Focus" @keydown="Login($event)"  type="password" size="40" required placeholder="Enter Password" @click="Login($event)" />
   </div>
 
   <div v-if="this.getStartMsg()" id="strtmsg">
-    {{ message }}
+    {{ this.message }}
   </div>
 
 </div>
@@ -179,5 +182,5 @@ textarea:focus, input:focus{
 #pwwd:focus {
     background-position:  163px 3.5px;
     width: 150px;
-    }
+}
 </style>
