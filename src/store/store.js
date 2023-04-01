@@ -28,6 +28,7 @@ export default {
 
     state: {
       showStart: true,
+      showMsg : false ,
       win:{
         About:WinInfo('About',false,250,300,500,300,10,20,'default'),
         Contact:WinInfo('Contact',false,25,20,400,200,0,0),
@@ -78,11 +79,18 @@ export default {
       },
 
       login(state,payload) {
-        if(payload.clientX-document.body.clientWidth/2>=55 && payload.target?.value?.length>4) {
-          state.showStart = false
-          const WebMacView = document.getElementById('webmak')
-          WebMacView.style.display = 'block'
+        if(payload.clientX-document.body.clientWidth/2>=55 || payload.keyCode === 13 ) {
+          if (payload.target?.value === "brr") {
+            state.showStart = false
+            const WebMacView = document.getElementById('webmak')
+            WebMacView.style.display = 'block'
+          }
+          else {
+            state.showMsg = true
+          }
         }
+
+        
       },
 
 
@@ -262,6 +270,9 @@ export default {
       },
       getStart(state) {
         return state.showStart
+      },
+      getStartMsg(state) {
+        return state.showMsg
       },
     }
   }

@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions , mapGetters } from 'vuex'
 
 
 
@@ -10,7 +10,7 @@ import { mapActions } from 'vuex'
 export default {
   data(){
     return {
-      message: "Touch ID or Enter Password",
+      message: "Password is YOURCOMPANYNAME",
       userName:{
         '1':'A3lachi',
         '2':'Farawa',
@@ -23,8 +23,13 @@ export default {
   components:{
 
   },
+  
   methods:{
     ...mapActions(['Login']),
+    ...mapGetters(['getStartMsg']),
+    getShowMsg() {
+      return this.getStartMsg
+    },
     prfImg() {
       var pimg = localStorage.getItem('profil');
       console.log('---> ',pimg)
@@ -36,10 +41,15 @@ export default {
         localStorage.setItem('profil', this.pImg);
       }
     },
+    submit() {
+      return false ;
+    },
   },
+  mounted() {
+  },
+
   created() {
     this.prfImg() ;
-    // this.pImg = 3;
   },
 
 }
@@ -59,11 +69,11 @@ export default {
   <!-- <div id="pwd" >
     <input id="pwdd" type="password" required @click="Login($event)">
   </div> -->
-  <form method="get" action="/search" id="search">
-    <input name="q" type="password" size="40" required placeholder="Enter Password" @click="Login($event)" />
-  </form>
+  <div  id="pwd">
+    <input id="pwwd" @keydown="Login($event)"  type="password" size="40" required placeholder="Enter Password" @click="Login($event)" />
+  </div>
 
-  <div id="strtmsg">
+  <div v-if="this.getStartMsg()" id="strtmsg">
     {{ message }}
   </div>
 
@@ -136,7 +146,7 @@ textarea:focus, input:focus{
   
 }
 
-#search input[type="password"] {
+#pwwd {
     cursor:default ;
     background: url('/login.svg') no-repeat right ;
     background-position:  113px 3.5px;
@@ -166,7 +176,7 @@ textarea:focus, input:focus{
     }
     
 
-#search input[type="password"]:focus {
+#pwwd:focus {
     background-position:  163px 3.5px;
     width: 150px;
     }
