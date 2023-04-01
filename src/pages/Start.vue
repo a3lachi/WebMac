@@ -1,11 +1,22 @@
 <script>
 import { mapActions } from 'vuex'
 
+
+
+
+
+
+// const profilImg = localStorage.getItem('profil');
 export default {
   data(){
     return {
       message: "Touch ID or Enter Password",
-      userName:'A3lachi'
+      userName:{
+        '1':'A3lachi',
+        '2':'Farawa',
+        '3':'Mli7',
+      },
+      pImg : 1,
     }
   },
 
@@ -14,6 +25,21 @@ export default {
   },
   methods:{
     ...mapActions(['Login']),
+    prfImg() {
+      var pimg = localStorage.getItem('profil');
+      console.log('---> ',pimg)
+      if (pimg === null ){
+        localStorage.setItem('profil', 1);
+      }
+      else {
+        this.pImg =1+ (pimg+1)%3
+        localStorage.setItem('profil', this.pImg);
+      }
+    },
+  },
+  created() {
+    this.prfImg() ;
+    // this.pImg = 3;
   },
 
 }
@@ -23,11 +49,11 @@ export default {
 <template>
 <div id="strt">
   <div id="profileImg">
-    <img id="profile" src="/prflimg.png" />
+    <img id="profile" :src="`/prflimg${pImg}.png`" />
   </div>
 
   <div id="usrnm">
-    {{ userName }}
+    {{ userName[this.pImg] }}
   </div>
 
   <div id="pwd" >
