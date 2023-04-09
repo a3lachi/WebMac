@@ -20,7 +20,7 @@ const WinInfo = (text,show,left,top,w,h,gp,paddingY,cursor) => {
 }
 
 
-const pwd = "💕💕💕"
+const pwd = ""
 
 
 export default {
@@ -122,7 +122,7 @@ export default {
 
         const border = bordersCondition(elemm.childNodes[0],x,y,state.win[elem].width,height,false)
         
-        if(border != false ) {
+        if(border === true ) {
           elemm.addEventListener('move', (event,state) => HandleResize(event,state) )
           state.resize.direction = border
           state.resize.status = true
@@ -163,7 +163,10 @@ export default {
         const border = bordersCondition(elemFather.childNodes[0],x,y,state.win[elem].width, height  ,true)
         state.win[elem].cursor = MouseCursor(border)
 
-        if( border != false ) state.drag.status = false
+        if( border === true ){
+          state.drag.status = false
+          console.log('border')
+        }
 
 
         

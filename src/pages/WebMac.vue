@@ -65,7 +65,7 @@ export default {
   max-height: 100%;
   transition: none;
   transition-property: none; 
-  display: none;
+  display: block;
 }
 
 

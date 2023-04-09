@@ -5,11 +5,6 @@ import { mapGetters } from 'vuex'
 
 
 export default {
-  data() {
-    return {
-      showComponentOne: true,
-    }
-  },
   computed: {
     ...mapGetters(['getStart']),
     start() {
@@ -27,7 +22,8 @@ export default {
 <template>
     
     <WebMac  />
-    <Start v-if="start" />
+    <!-- <Start v-if="start" /> --> 
+    <!-- change diplay to none in WebMac.vue -->
 
 </template>
 

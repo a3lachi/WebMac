@@ -158,7 +158,7 @@ textarea:focus, input:focus{
     /* background: url(search-dark.png) no-repeat 10px 6px #444; */
     
     background-color: #f1f5f9;
-    opacity: 0.4;
+    /* opacity: 0.4; */
     border: 0 none;
     font: bold 12px Arial,Helvetica,Sans-serif;
     /* color: white; */
