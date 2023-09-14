@@ -5,6 +5,7 @@ export default {
     height: Number,
     top: Number,
     left: Number,
+    text: String,
 
   }
 }
@@ -13,9 +14,10 @@ export default {
 
 
 <template>
-<div :style = "{ width:`${this.width}px` , height:`${this.height}px` , top:`${this.top}px` , left:`${this.left}px` }"  class="containerdlg">
+<div :style = "{ minWidth:`${this.width}px` , minHeight:`${this.height}px` , top:`${this.top}px` , left:`${this.left}px` }"  class="containerdlg">
   <div class="shadow-stuff"  :style = "{ width:`${this.width}px` , height:`${this.height}px` , top:`${this.top}px` , left:`${this.left}px` }" >
-      <div class="wrapper"  :style = "{ width:`${this.width}px` , height:`${this.height}px` , top:`${this.top}px` , left:`${this.left}px` }" >
+      <div class="wrapper"  :style = "{ minWidth:`${this.width}px` , minHeight:`${this.height}px` , top:`${this.top}px` , left:`${this.left}px` }" >
+      {{ text }}
       </div>
   </div>
 </div>
@@ -29,8 +31,7 @@ export default {
 .containerdlg{
   opacity: 1;
   position: relative;
-  width:100%;
-  height:100%;
+
   background-color: rgba(194,191,191,1);
   opacity: 1;
 }
@@ -63,6 +64,7 @@ export default {
   -moz-box-shadow: inset 0 2px 1px rgba(255,255,255,.97);
   box-shadow: inset 0 2px 1px rgba(255,255,255,.97);
   opacity: 1;
+  display: inline-block;
 }
 
 </style>

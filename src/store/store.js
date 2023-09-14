@@ -163,7 +163,7 @@ export default {
         const border = bordersCondition(elemFather.childNodes[0],x,y,state.win[elem].width, height  ,true)
         state.win[elem].cursor = MouseCursor(border)
 
-        if( border === true ){
+        if( border != false ){
           state.drag.status = false
           console.log('border')
         }

@@ -39,7 +39,7 @@ export default {
        
       @mousedown="mouseDown([$event,data.text])"   @mousemove="mouseMove([$event,data.text])"  @mouseup="mouseUp([$event,data.text])" 
       id="wion"
-      :style = "{ cursor:`${data.cursor}` , left:`${data.left}px`  , top:`${data.top}px` , minWidth:`${data.width}px` , width:`${data.width}px` , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px` , cursor:'default' }"    >
+      :style = "{ cursor:`${data.cursor}` , left:`${data.left}px`  , top:`${data.top}px` , minWidth:`${data.width}px`  , height:`${data.height+ 2*data.paddingY + 22 + 2*data.gap}px` , zIndex:`${data.zindex}px`  }"    >
 
         <WindowBar :data="data" />
         <WindowDialog :data="data" />
@@ -56,15 +56,16 @@ export default {
 
 <style>
 #wion{
-    transition: none;
-    transition-property: none; 
+    /* transition: none;
+    transition-property: none;  */
     position : absolute;
-    min-height: auto;
+    /* min-height: auto; */
     background-color: rgba(194,191,191,0.975);
     outline-style: solid;
     z-index: 50;
     border-radius: 1.4px;
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+    
     
 }
 

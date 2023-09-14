@@ -18,9 +18,10 @@ export default {
 				"min-height":"auto" ,
 				"padding-top":"20px",
 				"padding-bottom":"20px",
+				"display": "inline-block",
 				"opacity": 1,
 				"cursor":`${this.data.cursor}`,
-				"width":`${this.data.width}px`,
+				"min-width":`${this.data.width}px`,
 				// "height":`${this.data.height-20}px`,
 			};
 		}
@@ -31,11 +32,14 @@ export default {
 
 
 <template>
-	<div v-if="data.text === 'About'" :style="dialogStyles"  >
+	<div class="dlg" v-if="data.text === 'About'" :style="dialogStyles"  >
 		<AboutDialog :data="data" />
 	</div>
-	<div v-else-if="data.text === 'Contact'"  :style="dialogStyles" >
-		Contactsss   
+	<div class="contact" v-else-if="data.text === 'Contact'"  :style="dialogStyles" >
+		<p>Linkedin</p>
+        <p>Github</p>
+        <p>Twitter</p>
+
   </div>
 
 
@@ -46,6 +50,24 @@ export default {
 
 
 <style>
-
-
+.dlg{
+	opacity: 1;
+	width: 100%;
+	height:auto;
+	min-height:auto;
+	display: flex ;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap:50px;
+}
+.contact{
+    height:auto;
+	min-height:auto;
+	display: flex ;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap:50px;
+}
 </style>
