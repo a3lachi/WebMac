@@ -29,8 +29,6 @@ export const HandleResize = (event,state) => {
   state.mouse.x = event.clientX
   state.mouse.y = event.clientY
 
-  console.log('COORDINATES OF FATHER ',event.clientX,event.clientY)
-
   state.resize.mouse.x = event.clientX
   state.resize.mouse.y = event.clientY
 
