@@ -1,5 +1,5 @@
 # webmac
-Check webmac.vercel.app or clone repo, and run : npm install ; npm run dev ; 
+Check https://webmac.vercel.app/ or clone repo, and run : npm install ; npm run dev ; 
 
 ## Project Setup
 
