@@ -22,6 +22,6 @@ npm run build
 
 <h1>WebMac</h1>
 
-<p>First project experimenting with Vue.js</p>
+<p>First project experimenting with Vue.js, the opened windows are draggable, click inside the window and drag.</p>
 
 
