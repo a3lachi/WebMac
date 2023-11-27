@@ -24,10 +24,10 @@ export default {
 
 <template>
     <div class="aboutdg">
-        <Dialog :width="200" :height="90"  text="CS Graduate passionate about solving problems related to Distributed Systems and Software"   >
+        <Dialog :width="200" :height="90"  text=""   >
         </Dialog> 
 
-        <Dialog :width="200" :height="100" text="My expertise lies in effectively solving problems and I possess a keen interest in exploring various technologies and comprehending their underlying paradigms. I prioritize attaining mastery in one skill while also ensuring proficiency in others."   >
+        <Dialog :width="200" :height="100" text=""   >
             
         </Dialog> 
         <!-- <Dialog :width="200" :height="100"     /> -->
