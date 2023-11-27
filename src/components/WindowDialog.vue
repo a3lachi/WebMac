@@ -36,9 +36,7 @@ export default {
 		<AboutDialog :data="data" />
 	</div>
 	<div class="contact" v-else-if="data.text === 'Contact'"  :style="dialogStyles" >
-		<p>Linkedin</p>
-        <p>Github</p>
-        <p>Twitter</p>
+
 
   </div>
 
